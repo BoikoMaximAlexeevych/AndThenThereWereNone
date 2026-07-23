@@ -7,14 +7,18 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 
-[node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component")]
+[node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component")]
 script = ExtResource("1_lrhn5")
 input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=1157768615 node_paths=PackedStringArray("body")]
 unique_name_in_owner = true
 script = ExtResource("1_agfs1")
 body = NodePath("..")
+ACCELERATION = 1100.0
+MAX_SPEED = 300.0
+FRICTION = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=3096913]
 shape = SubResource("CapsuleShape2D_g4v7s")

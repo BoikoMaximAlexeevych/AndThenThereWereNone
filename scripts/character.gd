@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 func _update_components(delta: float) -> void:
 	input_component.update()
+	movement_component.dir = input_component.movement_direction
 	movement_component.tick(delta)
 	
 func _physics_process(delta: float) -> void:
