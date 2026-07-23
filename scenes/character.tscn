@@ -2,23 +2,104 @@
 
 [ext_resource type="Script" uid="uid://cspxduiefitrq" path="res://scripts/movement_component.gd" id="1_agfs1"]
 [ext_resource type="Script" uid="uid://iotmi8xeb230" path="res://scripts/character.gd" id="1_lrhn5"]
+[ext_resource type="Texture2D" uid="uid://b8hxwxrdvklid" path="res://assets/mgg (2).png" id="2_dp8ca"]
 [ext_resource type="Script" uid="uid://b2g6fg8wfvfnx" path="res://scripts/input_component.gd" id="2_rkhd4"]
 [ext_resource type="Texture2D" uid="uid://cl2p082jino47" path="res://assets/icon.svg" id="4_my7n2"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lw5n"]
+atlas = ExtResource("2_dp8ca")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cgup"]
+atlas = ExtResource("2_dp8ca")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5ia6"]
+atlas = ExtResource("2_dp8ca")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dpix"]
+atlas = ExtResource("2_dp8ca")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hyy3"]
+atlas = ExtResource("2_dp8ca")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irmqu"]
+atlas = ExtResource("2_dp8ca")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50cep"]
+atlas = ExtResource("2_dp8ca")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yvht"]
+atlas = ExtResource("2_dp8ca")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lw5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cgup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5ia6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dpix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hyy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irmqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50cep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yvht")
+}],
+"loop": 2,
+"name": &"idle",
+"speed": 3.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_irmqu"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7eonc"]
+_data = {
+&"idle": SubResource("Animation_irmqu")
+}
 
 [node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component")]
 script = ExtResource("1_lrhn5")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 
+[node name="visibleItems" type="Node2D" parent="." unique_id=921784716]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="visibleItems" unique_id=703323311]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"idle"
+autoplay = "idle"
+
 [node name="MovementComponent" type="Node" parent="." unique_id=1157768615 node_paths=PackedStringArray("body")]
 unique_name_in_owner = true
 script = ExtResource("1_agfs1")
 body = NodePath("..")
-ACCELERATION = 1100.0
-MAX_SPEED = 300.0
-FRICTION = 60.0
+ACCELERATION = 900.0
+MAX_SPEED = 100.0
+FRICTION = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=3096913]
 shape = SubResource("CapsuleShape2D_g4v7s")
@@ -29,4 +110,16 @@ script = ExtResource("2_rkhd4")
 metadata/_custom_type_script = "uid://b2g6fg8wfvfnx"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1551003137]
+visible = false
+scale = Vector2(0.295, 0.295)
 texture = ExtResource("4_my7n2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=231829282]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_horizontal_offset = 0.14
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1572239148]
+libraries/ = SubResource("AnimationLibrary_7eonc")

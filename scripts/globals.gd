@@ -1,6 +1,8 @@
 extends Node
 
 enum SCENES{MENU, MAIN}
+enum GAME_STATE{PLAY, CUTSCENE}
+
 
 var MENU_PATH: String = "res://scenes/ui/main_menu.tscn"
 var MAIN_SCENE_PATH: String = "res://scenes/game.tscn"
