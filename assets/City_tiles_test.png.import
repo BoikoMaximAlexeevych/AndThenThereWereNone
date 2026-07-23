@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8hxwxrdvklid"
-path="res://.godot/imported/mgg (2).png-253767af3f9938d2ccead368b9f0abfd.ctex"
+uid="uid://c36sevurp60ho"
+path="res://.godot/imported/City_tiles_test.png-4f153cb3ebe7e7259f42b4f504657a62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mgg (2).png"
-dest_files=["res://.godot/imported/mgg (2).png-253767af3f9938d2ccead368b9f0abfd.ctex"]
+source_file="res://assets/City_tiles_test.png"
+dest_files=["res://.godot/imported/City_tiles_test.png-4f153cb3ebe7e7259f42b4f504657a62.ctex"]
 
 [params]
 
