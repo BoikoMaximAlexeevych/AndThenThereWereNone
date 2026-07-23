@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://iotmi8xeb230" path="res://scripts/character.gd" id="1_lrhn5"]
 [ext_resource type="Texture2D" uid="uid://b8hxwxrdvklid" path="res://assets/mgg (2).png" id="2_dp8ca"]
 [ext_resource type="Script" uid="uid://b2g6fg8wfvfnx" path="res://scripts/input_component.gd" id="2_rkhd4"]
-[ext_resource type="Texture2D" uid="uid://cl2p082jino47" path="res://assets/icon.svg" id="4_my7n2"]
+[ext_resource type="Script" uid="uid://wmxckpjx1j0" path="res://scripts/hitbox_component.gd" id="6_0lw5n"]
+[ext_resource type="Script" uid="uid://c05o8ri7as1kd" path="res://scripts/camera_control_component.gd" id="7_2cgup"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0lw5n"]
 atlas = ExtResource("2_dp8ca")
@@ -81,10 +82,14 @@ _data = {
 &"idle": SubResource("Animation_irmqu")
 }
 
-[node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 11.0
+
+[node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component", "camera_control_component")]
 script = ExtResource("1_lrhn5")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
+camera_control_component = NodePath("CameraControlComponent")
 
 [node name="visibleItems" type="Node2D" parent="." unique_id=921784716]
 
@@ -109,11 +114,6 @@ unique_name_in_owner = true
 script = ExtResource("2_rkhd4")
 metadata/_custom_type_script = "uid://b2g6fg8wfvfnx"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1551003137]
-visible = false
-scale = Vector2(0.295, 0.295)
-texture = ExtResource("4_my7n2")
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=231829282]
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -123,3 +123,22 @@ drag_right_margin = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1572239148]
 libraries/ = SubResource("AnimationLibrary_7eonc")
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1347850006]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("6_0lw5n")
+metadata/_custom_type_script = "uid://wmxckpjx1j0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1163524541]
+shape = SubResource("CircleShape2D_g4v7s")
+debug_color = Color(0.7019608, 0.64705884, 0, 0.23137255)
+
+[node name="CameraControlComponent" type="Node" parent="." unique_id=1614301325 node_paths=PackedStringArray("hitbox_component", "camera", "body")]
+unique_name_in_owner = true
+script = ExtResource("7_2cgup")
+hitbox_component = NodePath("../HitboxComponent")
+camera = NodePath("../Camera2D")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://c05o8ri7as1kd"
