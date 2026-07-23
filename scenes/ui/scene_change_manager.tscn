@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dtgv1hclg45rg"]
+
+[ext_resource type="Script" uid="uid://b4ua3wclargf2" path="res://scripts/scene_change_manager.gd" id="1_faiqi"]
+[ext_resource type="Shader" uid="uid://b7hkoguhi0vp4" path="res://resources/materials/scene_change_manager.gdshader" id="1_r44wu"]
+
+[sub_resource type="Animation" id="Animation_faiqi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/circle_expansion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r44wu"]
+resource_name = "transition"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/circle_expansion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(3.0314324, 1, 0.43527526, 1),
+"update": 0,
+"values": [1.499999966472, 0.0, 0.0, 1.499999966472]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.51),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_new_scene"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_faiqi"]
+_data = {
+&"RESET": SubResource("Animation_faiqi"),
+&"transition": SubResource("Animation_r44wu")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7qx3"]
+shader = ExtResource("1_r44wu")
+shader_parameter/circle_expansion = 0.0
+shader_parameter/color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=205171973]
+layer = 100
+script = ExtResource("1_faiqi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=288498853]
+root_node = NodePath("../ColorRect")
+libraries/ = SubResource("AnimationLibrary_faiqi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1294176088]
+material = SubResource("ShaderMaterial_k7qx3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

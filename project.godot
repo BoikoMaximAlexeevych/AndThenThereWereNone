@@ -15,10 +15,16 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 run/max_fps=60
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+Globals="*uid://cv0fvi0vw4wec"
+SceneChangeManager="*uid://dtgv1hclg45rg"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [input]
 
