@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ciy0sd8llphxg"]
+
+[ext_resource type="Script" uid="uid://cxflte8p3kaxr" path="res://scripts/room.gd" id="1_ffxv4"]
+[ext_resource type="Script" uid="uid://dh6aux36cyex6" path="res://scripts/RoomData.gd" id="2_ffxv4"]
+
+[sub_resource type="Resource" id="Resource_36trf"]
+script = ExtResource("2_ffxv4")
+metadata/_custom_type_script = "uid://dh6aux36cyex6"
+
+[node name="room" type="Node2D" unique_id=417347654]
+script = ExtResource("1_ffxv4")
+room_data = SubResource("Resource_36trf")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=663286124]

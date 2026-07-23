@@ -8,6 +8,8 @@ extends Node
 var in_area: bool = false
 var area_focus_pos: Vector2
 
+var camera_offset = Vector2(0., -32)
+
 func _ready() -> void:
 	hitbox_component.entered_camera_lock_area.connect(_on_entered_cla)
 	hitbox_component.exited_camera_lock_area.connect(_on_exited_cla)
@@ -29,10 +31,10 @@ func update():
 			0.05
 		)
 	else:
-		if camera.global_position.distance_to(body.global_position) >= 10.:
+		if camera.global_position.distance_to(body.global_position + camera_offset) >= 10.:
 			camera.global_position = lerp(
 				camera.global_position,
-				body.global_position,
+				body.global_position + camera_offset,
 				0.03
 			)
 	

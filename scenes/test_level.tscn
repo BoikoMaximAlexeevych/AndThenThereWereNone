@@ -135,6 +135,7 @@ collision_mask = 2
 script = ExtResource("3_x4b8f")
 collision_shape = NodePath("CollisionShape2D")
 marker = NodePath("Marker2D")
+room_scene = 2
 metadata/_custom_type_script = "uid://2sx2ubw0w5ys"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Houses/Sprite2D2/CameraCaptureArea" unique_id=550460724]

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpeh7rqpwsnah" path="res://assets/mgg (6).png" id="2_0lw5n"]
 [ext_resource type="Script" uid="uid://b2g6fg8wfvfnx" path="res://scripts/input_component.gd" id="2_rkhd4"]
 [ext_resource type="Script" uid="uid://wmxckpjx1j0" path="res://scripts/hitbox_component.gd" id="6_0lw5n"]
+[ext_resource type="Script" uid="uid://bs6hmm4hjs6f8" path="res://interaction_component.gd" id="6_a5ia6"]
 [ext_resource type="Script" uid="uid://c05o8ri7as1kd" path="res://scripts/camera_control_component.gd" id="7_2cgup"]
 [ext_resource type="Script" uid="uid://dm1bntgwxsus0" path="res://scripts/animation_state_component.gd" id="7_a5ia6"]
 
@@ -220,12 +221,13 @@ states/Walk/position = Vector2(516.5, -55.25)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_50cep"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_8yvht"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_lagn4")]
 graph_offset = Vector2(78, -134)
 
-[node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component", "camera_control_component", "animation_state_component")]
+[node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component", "camera_control_component", "animation_state_component", "interaction_component")]
 script = ExtResource("1_lrhn5")
 input_component = NodePath("Components/InputComponent")
 movement_component = NodePath("Components/MovementComponent")
 camera_control_component = NodePath("Components/CameraControlComponent")
 animation_state_component = NodePath("Components/AnimationStateComponent")
+interaction_component = NodePath("Components/InteractionComponent")
 
 [node name="Components" type="Node" parent="." unique_id=398867761]
 
@@ -256,6 +258,11 @@ movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://dm1bntgwxsus0"
 
+[node name="InteractionComponent" type="Node" parent="Components" unique_id=267101170 node_paths=PackedStringArray("input_component")]
+script = ExtResource("6_a5ia6")
+input_component = NodePath("../InputComponent")
+metadata/_custom_type_script = "uid://bs6hmm4hjs6f8"
+
 [node name="visibleItems" type="Node2D" parent="." unique_id=921784716]
 
 [node name="Sprite2D" type="Sprite2D" parent="visibleItems" unique_id=1112571107]
@@ -268,6 +275,7 @@ frame = 1
 shape = SubResource("CapsuleShape2D_g4v7s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=231829282]
+offset = Vector2(0, -32)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_horizontal_offset = 0.14
@@ -295,3 +303,11 @@ advance_expression_base_node = NodePath("../Components/AnimationStateComponent")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = 0.0
 parameters/Walk/blend_position = 0.0
+
+[node name="UI_Marker" type="Control" parent="." unique_id=223231562]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 9.0
+offset_top = -23.475
+offset_right = 9.095
+offset_bottom = -23.475

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cicvc5eydpw26" path="res://scenes/character.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://km7k5s4uhatl" path="res://scenes/test_level.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dlfbsofhak3sl" path="res://scenes/ui/interaction_hint.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D" unique_id=775338362]
 
@@ -29,3 +30,9 @@ position = Vector2(187, 148)
 [node name="Character" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=118948951 instance=ExtResource("1_yqjtg")]
 position = Vector2(47, 75.75)
 disable_mode = 2
+
+[node name="UI_Layer" type="CanvasLayer" parent="." unique_id=87134029]
+
+[node name="InteractionHint" parent="UI_Layer" unique_id=2071176343 node_paths=PackedStringArray("player", "viewport") instance=ExtResource("3_lnu2h")]
+player = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport/Character")
+viewport = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport")
