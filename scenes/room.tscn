@@ -2,13 +2,63 @@
 
 [ext_resource type="Script" uid="uid://cxflte8p3kaxr" path="res://scripts/room.gd" id="1_ffxv4"]
 [ext_resource type="Script" uid="uid://dh6aux36cyex6" path="res://scripts/RoomData.gd" id="2_ffxv4"]
+[ext_resource type="PackedScene" uid="uid://dgdc2r2kmiqqv" path="res://scenes/draggable_furniture.tscn" id="3_jxe34"]
+[ext_resource type="Script" uid="uid://drdjkihkn1k8i" path="res://scripts/furniture_data.gd" id="4_jn645"]
+[ext_resource type="Texture2D" uid="uid://cl2p082jino47" path="res://assets/icon.svg" id="5_qvc4m"]
 
 [sub_resource type="Resource" id="Resource_36trf"]
 script = ExtResource("2_ffxv4")
 metadata/_custom_type_script = "uid://dh6aux36cyex6"
 
+[sub_resource type="Resource" id="Resource_qvc4m"]
+resource_local_to_scene = true
+script = ExtResource("4_jn645")
+texture = ExtResource("5_qvc4m")
+mass = 3.0
+friction = 0.283
+metadata/_custom_type_script = "uid://drdjkihkn1k8i"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4b8f"]
+size = Vector2(120, 122.5)
+
 [node name="room" type="Node2D" unique_id=417347654]
 script = ExtResource("1_ffxv4")
 room_data = SubResource("Resource_36trf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=503137041]
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="CanvasLayer" unique_id=965913212]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+stretch = true
+stretch_shrink = 4
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer3" unique_id=1294637750]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="draggable_furniture" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=1270454160 node_paths=PackedStringArray("area") instance=ExtResource("3_jxe34")]
+position = Vector2(197.75, 108.5)
+Data = SubResource("Resource_qvc4m")
+area = NodePath("Area2D2")
+
+[node name="Area2D2" type="Area2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/draggable_furniture" unique_id=1893004002]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/draggable_furniture/Area2D2" unique_id=799117876]
+position = Vector2(0.25, -1.5)
+shape = SubResource("RectangleShape2D_x4b8f")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=663286124]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpeh7rqpwsnah" path="res://assets/mgg (6).png" id="2_0lw5n"]
 [ext_resource type="Script" uid="uid://b2g6fg8wfvfnx" path="res://scripts/input_component.gd" id="2_rkhd4"]
 [ext_resource type="Script" uid="uid://wmxckpjx1j0" path="res://scripts/hitbox_component.gd" id="6_0lw5n"]
-[ext_resource type="Script" uid="uid://bs6hmm4hjs6f8" path="res://interaction_component.gd" id="6_a5ia6"]
+[ext_resource type="Script" uid="uid://bs6hmm4hjs6f8" path="res://scripts/interaction_component.gd" id="6_a5ia6"]
 [ext_resource type="Script" uid="uid://c05o8ri7as1kd" path="res://scripts/camera_control_component.gd" id="7_2cgup"]
 [ext_resource type="Script" uid="uid://dm1bntgwxsus0" path="res://scripts/animation_state_component.gd" id="7_a5ia6"]
 
