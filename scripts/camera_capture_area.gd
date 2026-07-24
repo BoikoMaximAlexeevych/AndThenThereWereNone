@@ -4,6 +4,7 @@ extends Area2D
 @export var collision_shape: CollisionShape2D
 @export var marker: Marker2D
 @export var room_scene: Globals.SCENES
+@export var room_data: RoomData
 
 var player_in_zone := false
 
@@ -25,4 +26,5 @@ func _on_area_exited(area: Area2D) -> void:
 		SignalBus.hide_hint.emit()
 
 func _on_player_enters():
+	Globals.next_room_data = self.room_data
 	SceneChangeManager.change_scene_to(room_scene)

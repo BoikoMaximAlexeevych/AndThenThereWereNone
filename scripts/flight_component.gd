@@ -10,9 +10,9 @@ var _target: Vector2
 var _start: Vector2
 var _start_scale: Vector2
 
+@export var body: Area2D
 
 func launch(target: Vector2) -> void:
-	var body := _body()
 	if !body:
 		return
 	_target = target
@@ -23,13 +23,9 @@ func launch(target: Vector2) -> void:
 	tween.finished.connect(func() -> void: flight_ended.emit())
 
 func _apply(t: float) -> void:
-	var body := _body()
 	if body == null:
 		return
 	var pos := _start.lerp(_target, Easing.ease_out_back(t))
 	pos.y -= Easing.arc(t) * ARCH_HEIGHT
 	body.global_position = pos
 	body.scale = _start_scale.lerp(_start_scale * END_SCALE, Easing.ease_out_cubic(t))
-
-func _body() -> Node2D:
-	return get_parent() as Node2D

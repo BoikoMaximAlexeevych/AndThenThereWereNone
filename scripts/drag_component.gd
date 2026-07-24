@@ -59,7 +59,6 @@ func release()->void:
 	draw_component.queue_redraw()
 	
 func _on_mouse_entered() -> void:
-	print("hey")
 	in_focus = true
 
 func _on_mouse_exited() -> void:

@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://b5v6gqod2hy0p" path="res://scripts/draggable_furniture.gd" id="1_4kluj"]
 [ext_resource type="Script" uid="uid://bred8bsbyab6v" path="res://scripts/drag_component.gd" id="2_2dfpt"]
 [ext_resource type="Script" uid="uid://bi3maui86kxxb" path="res://scripts/draw_component.gd" id="3_jcvp6"]
-[ext_resource type="Texture2D" uid="uid://cl2p082jino47" path="res://assets/icon.svg" id="4_jttqg"]
 
-[node name="draggable_furniture" type="RigidBody2D" unique_id=1359761671 node_paths=PackedStringArray("drag_component") groups=["FurnitureItems"]]
+[node name="draggable_furniture" type="RigidBody2D" unique_id=1359761671 node_paths=PackedStringArray("area", "drag_component") groups=["FurnitureItems"]]
 input_pickable = true
 script = ExtResource("1_4kluj")
+area = NodePath("Area2D")
 drag_component = NodePath("Components/DragComponent")
 
 [node name="Components" type="Node" parent="." unique_id=732902699]
@@ -22,7 +22,13 @@ metadata/_custom_type_script = "uid://bred8bsbyab6v"
 script = ExtResource("3_jcvp6")
 metadata/_custom_type_script = "uid://bi3maui86kxxb"
 
+[node name="Shadow" type="Sprite2D" parent="." unique_id=541886259]
+modulate = Color(0, 0, 0, 0.42745098)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1188863431]
-texture = ExtResource("4_jttqg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1339252391]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=476548334]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1355941036]

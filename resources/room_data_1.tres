@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RoomData" format=3 uid="uid://mawy6mlnospw"]
+
+[ext_resource type="Resource" uid="uid://c2f0fwkg60c0v" path="res://resources/furniture_set.tres" id="1_hs2ij"]
+[ext_resource type="Resource" uid="uid://bckj01uy3rbk8" path="res://resources/knuckles_data.tres" id="2_phrik"]
+[ext_resource type="Script" uid="uid://dh6aux36cyex6" path="res://scripts/RoomData.gd" id="3_pihha"]
+[ext_resource type="Resource" uid="uid://d13m3vym7stqp" path="res://resources/trash_set.tres" id="4_sktc2"]
+
+[resource]
+script = ExtResource("3_pihha")
+trash_set = ExtResource("4_sktc2")
+key_item_data = ExtResource("2_phrik")
+furniture_set = ExtResource("1_hs2ij")
+metadata/_custom_type_script = "uid://dh6aux36cyex6"
