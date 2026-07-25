@@ -18,8 +18,6 @@ enum SCENES {
 	FISHING_MINIGAME
 }
 
-var next_room_data: RoomData
-
 var times_entered_main: int = 0
 
 func greeting_scenario() -> void: # lines 0 - 6

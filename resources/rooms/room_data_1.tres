@@ -65,4 +65,5 @@ script = ExtResource("1_23pfr")
 tile_set = ExtResource("2_p5y43")
 trash_set = SubResource("Resource_17ug6")
 furniture_set = SubResource("Resource_vpd5v")
+minigame = null
 metadata/_custom_type_script = "uid://dh6aux36cyex6"
