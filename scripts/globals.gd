@@ -24,4 +24,3 @@ var SCENES_DICT: Dictionary[SCENES, String] = {
 # Resources to be loaded when ROOM1 gets called once more
 
 var next_room_data: RoomData
-var next_key_item: KeyItemData

@@ -5,7 +5,6 @@ signal bagged(item: TrashItem)
 
 var Data: TrashItemData
 @onready var sprite := $Sprite2D
-
 @export var flight_component: FlightComponent
 
 var _collected: bool = false

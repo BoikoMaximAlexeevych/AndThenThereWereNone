@@ -1,4 +1,4 @@
-class_name CameraCaptureArea
+class_name HouseTransitionArea
 extends Area2D
 
 @export var collision_shape: CollisionShape2D
@@ -16,15 +16,17 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		(area as HitboxComponent).entered_camera_lock_area.emit(marker.global_position)
-		SignalBus.character_can_enter_toggled.emit()
+		SignalBus.character_can_enter_toggled.emit(self)
 		SignalBus.show_hint.emit("E", "Enter")
 
 func _on_area_exited(area: Area2D) -> void:
 	if area is HitboxComponent:
-		SignalBus.character_can_enter_toggled.emit()
+		SignalBus.character_can_enter_toggled.emit(self)
 		(area as HitboxComponent).exited_camera_lock_area.emit()
 		SignalBus.hide_hint.emit()
 
-func _on_player_enters():
-	Globals.next_room_data = self.room_data
-	SceneChangeManager.change_scene_to(room_scene)
+func _on_player_enters(room: HouseTransitionArea):
+	if room == self:
+		Globals.next_room_data = self.room_data
+		SceneChangeManager.current_mode = SceneChangeManager.TRANSITION_MODES.REGULAR
+		SceneChangeManager.change_scene_to(room_scene)

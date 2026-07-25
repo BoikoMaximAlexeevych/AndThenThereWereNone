@@ -14,19 +14,20 @@ size = Vector2(170.25, 99.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 resource_local_to_scene = true
-size = Vector2(287.5, 47.25)
+size = Vector2(303.25, 47.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
 size = Vector2(89.75, 195)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
-size = Vector2(275, 50.75)
+size = Vector2(290.5, 50.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
 size = Vector2(67.75, 186.75)
 
-[node name="room" type="Node2D" unique_id=417347654 node_paths=PackedStringArray("trash_spawner", "furniture_spawner", "trash_bin_pos")]
+[node name="room" type="Node2D" unique_id=417347654 node_paths=PackedStringArray("environment", "trash_spawner", "furniture_spawner", "trash_bin_pos")]
 script = ExtResource("1_ffxv4")
+environment = NodePath("CanvasLayer/SubViewportContainer3/SubViewport/Env")
 trash_spawner = NodePath("CanvasLayer/SubViewportContainer3/SubViewport/Trash Spawner")
 furniture_spawner = NodePath("CanvasLayer/SubViewportContainer3/SubViewport/FurnitureSpawner")
 trash_bin_pos = NodePath("CanvasLayer/SubViewportContainer3/SubViewport/Sprite2D/Marker2D")
@@ -91,15 +92,15 @@ shape_source = NodePath("../FurnitureSpawnShape")
 [node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=1988837217]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/StaticBody2D" unique_id=1835707596]
-position = Vector2(256.75, 239.125)
+position = Vector2(248.875, 239.125)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/StaticBody2D" unique_id=1228154734]
-position = Vector2(82.375, 134.5)
+position = Vector2(64, 134.5)
 shape = SubResource("RectangleShape2D_57qmd")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/StaticBody2D" unique_id=1112597023]
-position = Vector2(254.25, 29.625)
+position = Vector2(246.5, 29.625)
 shape = SubResource("RectangleShape2D_d0u6y")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/StaticBody2D" unique_id=921760226]

@@ -4,7 +4,8 @@
 [ext_resource type="TileSet" uid="uid://ntbjqrldcgm" path="res://resources/background_tile_set.tres" id="2_tmr53"]
 [ext_resource type="Script" uid="uid://2sx2ubw0w5ys" path="res://scripts/camera_capture_area.gd" id="3_x4b8f"]
 [ext_resource type="Texture2D" uid="uid://c36sevurp60ho" path="res://assets/City_tiles_test.png" id="4_x4b8f"]
-[ext_resource type="Resource" uid="uid://mawy6mlnospw" path="res://resources/room_data_1.tres" id="5_tmr53"]
+[ext_resource type="Resource" uid="uid://crfxxvap51t38" path="res://resources/rooms/room_data_2.tres" id="5_qcd3b"]
+[ext_resource type="Resource" uid="uid://cp40noo7i8dpm" path="res://resources/rooms/room_data_1.tres" id="10_4asn1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4b8f"]
 texture = ExtResource("4_x4b8f")
@@ -17,8 +18,11 @@ texture = ExtResource("4_x4b8f")
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
 sources/0 = SubResource("TileSetAtlasSource_x4b8f")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(158.41586, 34.29665)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(141.9406, 33.6842)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(136.87128, 31.84689)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmr53"]
 texture = ExtResource("4_x4b8f")
@@ -107,21 +111,23 @@ position = Vector2(200, -113.5)
 scale = Vector2(0.7890625, 1.6328125)
 texture = ExtResource("2_j6w7d")
 
-[node name="CameraCaptureArea" type="Area2D" parent="Houses/Sprite2D" unique_id=595598581 node_paths=PackedStringArray("collision_shape", "marker")]
+[node name="CameraCaptureArea" type="Area2D" parent="Houses/Sprite2D" unique_id=1329277586 node_paths=PackedStringArray("collision_shape", "marker")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_x4b8f")
 collision_shape = NodePath("CollisionShape2D")
 marker = NodePath("Marker2D")
+room_scene = 2
+room_data = ExtResource("5_qcd3b")
 metadata/_custom_type_script = "uid://2sx2ubw0w5ys"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Houses/Sprite2D/CameraCaptureArea" unique_id=1170365474]
-position = Vector2(4.4356537, 44.401917)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Houses/Sprite2D/CameraCaptureArea" unique_id=293495592]
+position = Vector2(1.2673187, 42.87081)
 scale = Vector2(1, 1.0000002)
-shape = SubResource("RectangleShape2D_57qmd")
+shape = SubResource("RectangleShape2D_yf5fn")
 
-[node name="Marker2D" type="Marker2D" parent="Houses/Sprite2D/CameraCaptureArea" unique_id=460508543]
-position = Vector2(3.80198, 19.904308)
+[node name="Marker2D" type="Marker2D" parent="Houses/Sprite2D/CameraCaptureArea" unique_id=1145334712]
+position = Vector2(0, 18.679426)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Houses" unique_id=15642902]
 modulate = Color(1, 0.2599572, 0.2599572, 1)
@@ -129,23 +135,25 @@ position = Vector2(-50, -113.5)
 scale = Vector2(0.7890625, 1.6328125)
 texture = ExtResource("2_j6w7d")
 
-[node name="CameraCaptureArea" type="Area2D" parent="Houses/Sprite2D2" unique_id=1833232370 node_paths=PackedStringArray("collision_shape", "marker")]
+[node name="CameraCaptureArea" type="Area2D" parent="Houses/Sprite2D2" unique_id=1303376109 node_paths=PackedStringArray("collision_shape", "marker")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_x4b8f")
 collision_shape = NodePath("CollisionShape2D")
 marker = NodePath("Marker2D")
 room_scene = 2
-room_data = ExtResource("5_tmr53")
+room_data = ExtResource("10_4asn1")
 metadata/_custom_type_script = "uid://2sx2ubw0w5ys"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Houses/Sprite2D2/CameraCaptureArea" unique_id=550460724]
-position = Vector2(4.4356537, 44.401917)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Houses/Sprite2D2/CameraCaptureArea" unique_id=800823924]
+position = Vector2(1.1444092e-05, 43.17704)
 scale = Vector2(1, 1.0000002)
-shape = SubResource("RectangleShape2D_57qmd")
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(1, 0.6677011, 0.977392, 0.41960785)
 
-[node name="Marker2D" type="Marker2D" parent="Houses/Sprite2D2/CameraCaptureArea" unique_id=1584548546]
-position = Vector2(3.80198, 19.904308)
+[node name="Marker2D" type="Marker2D" parent="Houses/Sprite2D2/CameraCaptureArea" unique_id=1290087439]
+position = Vector2(0, 18.066984)
+scale = Vector2(1, 1.0000002)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1001182065]
 tile_map_data = PackedByteArray("AADz////AAAAAAAAAAD0////AAAAAAAAAAD1////AAACAAAAAAD2////AAABAAAAAAD3////AAACAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAABAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAACAAAAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAACAP//AAABAAAAAAADAP//AAABAAAAAAAEAP//AAACAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAABAAAAAAAIAP//AAAAAAAAAAAJAP//AAACAAAAAAAKAP//AAABAAAAAAALAP//AAAAAAAAAAAMAP//AAACAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAACAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAABAAAAAAATAP//AAACAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAABAAAAAAAXAP//AAACAAAAAAAYAP//AAAAAAAAAAAZAP//AAABAAAAAAAaAP//AAACAAAAAADk////AAAAAAAAAADl////AAABAAAAAADm////AAACAAAAAADn////AAAAAAAAAADo////AAABAAAAAADp////AAACAAAAAADq////AAAAAAAAAADr////AAABAAAAAADs////AAACAAAAAADt////AAAAAAAAAADu////AAABAAAAAADv////AAACAAAAAADw////AAAAAAAAAADx////AAABAAAAAADy////AAACAAAAAAA=")

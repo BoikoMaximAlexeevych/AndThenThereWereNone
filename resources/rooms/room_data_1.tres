@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="RoomData" format=3 uid="uid://cp40noo7i8dpm"]
+
+[ext_resource type="Script" uid="uid://dh6aux36cyex6" path="res://scripts/RoomData.gd" id="1_23pfr"]
+[ext_resource type="Script" uid="uid://kaln86m6h80" path="res://scripts/key_item_data.gd" id="1_t5l3r"]
+[ext_resource type="Script" uid="uid://drdjkihkn1k8i" path="res://scripts/furniture_data.gd" id="1_vpd5v"]
+[ext_resource type="TileSet" uid="uid://b637s5o7rc7rg" path="res://resources/rooms/room_tilesets/blue_room_tile_set.tres" id="2_p5y43"]
+[ext_resource type="Texture2D" uid="uid://pow6xayt3pu0" path="res://assets/background (4).png" id="2_w4kfw"]
+[ext_resource type="Script" uid="uid://br8kbvbp02nnw" path="res://scripts/furniture_set.gd" id="3_0tyq2"]
+[ext_resource type="Script" uid="uid://cykcge0mxxup1" path="res://scripts/trash_set_data.gd" id="3_q0ihf"]
+[ext_resource type="Script" uid="uid://1t1bbf6xq3jh" path="res://scripts/trash_item_data.gd" id="4_t5l3r"]
+[ext_resource type="Texture2D" uid="uid://dccluci170a11" path="res://assets/trash.png" id="5_ne7xn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i75oc"]
+atlas = ExtResource("2_w4kfw")
+region = Rect2(144, 112, 32, 32)
+
+[sub_resource type="Resource" id="Resource_w4kfw"]
+script = ExtResource("1_vpd5v")
+texture = SubResource("AtlasTexture_i75oc")
+mass = 5.0
+friction = 0.6
+metadata/_custom_type_script = "uid://drdjkihkn1k8i"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpd5v"]
+atlas = ExtResource("2_w4kfw")
+region = Rect2(16, 0, 48, 32)
+
+[sub_resource type="Resource" id="Resource_0tyq2"]
+script = ExtResource("1_vpd5v")
+texture = SubResource("AtlasTexture_vpd5v")
+mass = 10.0
+friction = 0.8
+metadata/_custom_type_script = "uid://drdjkihkn1k8i"
+
+[sub_resource type="Resource" id="Resource_vpd5v"]
+script = ExtResource("3_0tyq2")
+furnitureTypes = Array[ExtResource("1_vpd5v")]([SubResource("Resource_w4kfw"), SubResource("Resource_0tyq2")])
+metadata/_custom_type_script = "uid://br8kbvbp02nnw"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne7xn"]
+atlas = ExtResource("5_ne7xn")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="Resource" id="Resource_t5l3r"]
+script = ExtResource("1_t5l3r")
+texture = SubResource("AtlasTexture_ne7xn")
+metadata/_custom_type_script = "uid://kaln86m6h80"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhoye"]
+atlas = ExtResource("5_ne7xn")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="Resource" id="Resource_nqy16"]
+script = ExtResource("4_t5l3r")
+texture = SubResource("AtlasTexture_rhoye")
+metadata/_custom_type_script = "uid://1t1bbf6xq3jh"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5l3r"]
+atlas = ExtResource("5_ne7xn")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="Resource" id="Resource_q0ihf"]
+script = ExtResource("4_t5l3r")
+texture = SubResource("AtlasTexture_t5l3r")
+metadata/_custom_type_script = "uid://1t1bbf6xq3jh"
+
+[sub_resource type="Resource" id="Resource_17ug6"]
+script = ExtResource("3_q0ihf")
+trash_types = Array[ExtResource("4_t5l3r")]([SubResource("Resource_nqy16"), SubResource("Resource_q0ihf")])
+min_distance = 32.0
+metadata/_custom_type_script = "uid://cykcge0mxxup1"
+
+[resource]
+script = ExtResource("1_23pfr")
+tile_set = ExtResource("2_p5y43")
+trash_set = SubResource("Resource_17ug6")
+key_item_data = SubResource("Resource_t5l3r")
+furniture_set = SubResource("Resource_vpd5v")
+metadata/_custom_type_script = "uid://dh6aux36cyex6"

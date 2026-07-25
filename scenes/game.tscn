@@ -34,5 +34,7 @@ disable_mode = 2
 [node name="UI_Layer" type="CanvasLayer" parent="." unique_id=87134029]
 
 [node name="InteractionHint" parent="UI_Layer" unique_id=2071176343 node_paths=PackedStringArray("player", "viewport") instance=ExtResource("3_lnu2h")]
+offset_left = -500.0
+offset_right = -500.0
 player = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport/Character")
 viewport = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport")
