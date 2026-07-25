@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bklemgt8g8r6x" path="res://scripts/interaction_hint.gd" id="1_0wrgi"]
 [ext_resource type="Texture2D" uid="uid://bdwdmi1qr55n5" path="res://assets/UI_sprites.png" id="2_dqjvw"]
+[ext_resource type="Theme" uid="uid://cwvhfd302rriu" path="res://resources/game_theme.tres" id="3_fcfb7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqjvw"]
 atlas = ExtResource("2_dqjvw")
@@ -173,6 +174,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -2.565)
+theme = ExtResource("3_fcfb7")
 theme_override_colors/default_color = Color(0.04950881, 0.04950881, 0.04950881, 1)
 text = "X"
 horizontal_alignment = 1
@@ -182,6 +184,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.08
+theme = ExtResource("3_fcfb7")
 text = "placeholder text
 "
 vertical_alignment = 1
