@@ -3,12 +3,15 @@ extends Area2D
 
 @export var collision_shape: CollisionShape2D
 @export var marker: Marker2D
-@export var room_scene: SceneChangeManager.SCENES
+@export var room_scene: Globals.SCENES
 @export var room_data: RoomData
 
 var player_in_zone := false
 
 func _ready() -> void:
+	if (MinigameManager.is_minigame_finished(room_data.minigame)):
+		queue_free()
+	
 	connect("area_entered", _on_area_entered)
 	connect("area_exited", _on_area_exited)
 	SignalBus.player_enters_room.connect(_on_player_enters)

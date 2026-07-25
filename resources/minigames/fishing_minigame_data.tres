@@ -10,5 +10,5 @@ region = Rect2(63.46257, 63.028664, 16.53743, 16.971336)
 [resource]
 script = ExtResource("1_0mvv7")
 icon = SubResource("AtlasTexture_434rd")
-scene = 3
+scene = 4
 metadata/_custom_type_script = "uid://dvsf5casaabk2"

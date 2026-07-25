@@ -6,7 +6,7 @@ signal picked(key_item:KeyItem)
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collider: CollisionShape2D = $CollisionShape2D
 
-var minigame_scene: SceneChangeManager.SCENES
+var minigame_scene: Globals.SCENES
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
