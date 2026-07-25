@@ -7,7 +7,7 @@ extends Minigame
 @export var cop: Cop
 @export var hud: FightHud
 
-var _is_fighting: bool = false
+var _is_fighting: bool = true
 var _meter_value: float
 
 func _ready() -> void:
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	_meter_value -= config.drain_per_second * delta
 	
 	if (Input.is_action_just_pressed("mouse_click")):
-		_meter_value += _meter_value + config.click_gain
+		_meter_value += config.click_gain
 	
 	_update_visuals()
 	_evaluate()
@@ -41,6 +41,7 @@ func _update_visuals():
 	hud.set_progress(_meter_value)
 	
 func _win_fight():
+	_is_fighting = false;
 	hud.set_prompt("")
 	enemy.play_defeat()
 	await get_tree().create_timer(config.enemy_fall_time).timeout
@@ -48,7 +49,6 @@ func _win_fight():
 
 func _start_cop() -> void:
 	cop.show()
-	cop.struck.connect(_on_cop_struck, CONNECT_ONE_SHOT)
 	cop.enter_and_strike(player.global_position, config.cop_enter_time)
 
 func _on_cop_struck() -> void:

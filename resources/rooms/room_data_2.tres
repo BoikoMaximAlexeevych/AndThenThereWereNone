@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dh6aux36cyex6" path="res://scripts/RoomData.gd" id="1_cafr0"]
 [ext_resource type="Script" uid="uid://drdjkihkn1k8i" path="res://scripts/furniture_data.gd" id="1_j82eq"]
-[ext_resource type="Script" uid="uid://kaln86m6h80" path="res://scripts/key_item_data.gd" id="1_pgsql"]
 [ext_resource type="Texture2D" uid="uid://dccluci170a11" path="res://assets/trash.png" id="2_5d8si"]
 [ext_resource type="Texture2D" uid="uid://ba5hr7krwyhhi" path="res://assets/funSS.png" id="2_e57ku"]
 [ext_resource type="TileSet" uid="uid://ddub8dxu5qv50" path="res://resources/rooms/room_tilesets/red_room_tileset.tres" id="2_ee8q3"]
@@ -37,15 +36,6 @@ script = ExtResource("3_c6x2c")
 furnitureTypes = Array[ExtResource("1_j82eq")]([SubResource("Resource_0v47x"), SubResource("Resource_gyry4")])
 metadata/_custom_type_script = "uid://br8kbvbp02nnw"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f016l"]
-atlas = ExtResource("2_5d8si")
-region = Rect2(48, 48, 16, 16)
-
-[sub_resource type="Resource" id="Resource_c1ad5"]
-script = ExtResource("1_pgsql")
-texture = SubResource("AtlasTexture_f016l")
-metadata/_custom_type_script = "uid://kaln86m6h80"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_n21ju"]
 atlas = ExtResource("2_5d8si")
 region = Rect2(32, 16, 16, 16)
@@ -74,6 +64,6 @@ metadata/_custom_type_script = "uid://cykcge0mxxup1"
 script = ExtResource("1_cafr0")
 tile_set = ExtResource("2_ee8q3")
 trash_set = SubResource("Resource_ajijp")
-key_item_data = SubResource("Resource_c1ad5")
 furniture_set = SubResource("Resource_oclng")
+minigame = 1
 metadata/_custom_type_script = "uid://dh6aux36cyex6"

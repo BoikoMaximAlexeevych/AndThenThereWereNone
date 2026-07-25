@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MinigameData" format=3 uid="uid://d1pglkh480clo"]
+
+[ext_resource type="Texture2D" uid="uid://dccluci170a11" path="res://assets/trash.png" id="1_5o212"]
+[ext_resource type="Script" uid="uid://dvsf5casaabk2" path="res://scripts/minigames/minigame_data.gd" id="1_ksdyd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1gi3"]
+atlas = ExtResource("1_5o212")
+region = Rect2(0, 64.816345, 16.548416, 15.183655)
+
+[resource]
+script = ExtResource("1_ksdyd")
+icon = SubResource("AtlasTexture_n1gi3")
+scene = 3
+metadata/_custom_type_script = "uid://dvsf5casaabk2"

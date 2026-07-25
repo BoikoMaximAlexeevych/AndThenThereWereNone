@@ -6,7 +6,7 @@ signal picked(key_item:KeyItem)
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collider: CollisionShape2D = $CollisionShape2D
 
-var minigame_scene: Globals.SCENES
+var minigame_scene: SceneChangeManager.SCENES
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
@@ -14,12 +14,12 @@ func _ready() -> void:
 	input_event.connect(_on_input_event)
 	self.visible = false
 	
-func setup(data: KeyItemData) -> void:
-	sprite.texture = data.texture
+func setup(data: MinigameData) -> void:
+	sprite.texture = data.icon
 	var rect = RectangleShape2D.new()
-	rect.size = data.texture.get_size()
+	rect.size = data.icon.get_size()
 	collider.shape = rect
-	self.minigame_scene = data.minigame_scene
+	self.minigame_scene = data.scene
 
 func appear() -> void:
 	animPlayer.play("appear")

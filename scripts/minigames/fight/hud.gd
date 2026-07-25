@@ -8,4 +8,4 @@ func set_progress(value: float) -> void:
 	bar.value = value
 
 func set_prompt(text: String) -> void:
-	prompt.text
+	prompt.text = text;

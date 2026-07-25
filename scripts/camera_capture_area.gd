@@ -3,7 +3,7 @@ extends Area2D
 
 @export var collision_shape: CollisionShape2D
 @export var marker: Marker2D
-@export var room_scene: Globals.SCENES
+@export var room_scene: SceneChangeManager.SCENES
 @export var room_data: RoomData
 
 var player_in_zone := false

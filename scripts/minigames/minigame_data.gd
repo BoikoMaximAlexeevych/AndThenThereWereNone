@@ -1,5 +1,5 @@
 extends Resource
 class_name MinigameData
 
-@export var icon: TextureRect
-@export var scene: Globals.SCENES
+@export var icon: Texture2D
+@export var scene: SceneChangeManager.SCENES 

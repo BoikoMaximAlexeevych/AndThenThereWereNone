@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b4ua3wclargf2" path="res://scripts/scene_change_manager.gd" id="1_faiqi"]
 [ext_resource type="Shader" uid="uid://b7hkoguhi0vp4" path="res://resources/materials/scene_change_manager.gdshader" id="1_r44wu"]
+[ext_resource type="PackedScene" uid="uid://toa36wpelqr1" path="res://scenes/ui/main_menu.tscn" id="2_xcqct"]
 [ext_resource type="Texture2D" uid="uid://dccluci170a11" path="res://assets/trash.png" id="3_37tke"]
+[ext_resource type="PackedScene" uid="uid://ds6k1ibcod7rd" path="res://scenes/game.tscn" id="3_plgh4"]
 [ext_resource type="FontFile" uid="uid://c53fmek8kv8nf" path="res://assets/fonts/SHPinscher-Regular.otf" id="4_e5huv"]
+[ext_resource type="PackedScene" uid="uid://ciy0sd8llphxg" path="res://scenes/room.tscn" id="4_iguyk"]
+[ext_resource type="PackedScene" uid="uid://cpfrguwtmspmj" path="res://scenes/minigames/fighting_minigame.tscn" id="5_plgh4"]
 
 [sub_resource type="Animation" id="Animation_faiqi"]
 length = 0.001
@@ -231,6 +235,12 @@ region = Rect2(0, 64, 16, 16)
 [node name="CanvasLayer" type="CanvasLayer" unique_id=205171973]
 layer = 100
 script = ExtResource("1_faiqi")
+scene_data = Dictionary[int, PackedScene]({
+0: ExtResource("2_xcqct"),
+1: ExtResource("3_plgh4"),
+2: ExtResource("4_iguyk"),
+3: ExtResource("5_plgh4")
+})
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=288498853]
 root_node = NodePath("../ColorRect")

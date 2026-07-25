@@ -1,7 +1,4 @@
 extends Node2D
-@export_category("Resources")
-@export var room_data: RoomData
-@export var key_item_data: KeyItemData
 @export_category("Scene Components")
 @export var environment: RoomEnvironment
 @export var trash_spawner: TrashSpawner 
@@ -10,11 +7,12 @@ extends Node2D
 
 var key_item: KeyItem
 var _items_remaining: int = 0
+var _room_data: RoomData
 
 var key_item_scene = preload("res://scenes/key_item.tscn")
 
 func _ready() -> void:
-	self.room_data = Globals.next_room_data
+	self._room_data = Globals.next_room_data
 	setup_from_room_data()
 	trash_spawner.spawn_trash()
 	furniture_spawner.spawn_furniture()
@@ -27,11 +25,10 @@ func _ready() -> void:
 	key_item.global_position = trash_spawner.get_viewport_rect().get_center()
 
 func setup_from_room_data() -> void:
-	environment.tile_set_to_apply = room_data.tile_set
+	environment.tile_set_to_apply = _room_data.tile_set
 	environment.apply_tileset()	
-	trash_spawner.trash_set = room_data.trash_set
-	furniture_spawner.furniture_set = room_data.furniture_set
-	self.key_item_data = room_data.key_item_data
+	trash_spawner.trash_set = _room_data.trash_set
+	furniture_spawner.furniture_set = _room_data.furniture_set
 	
 func _on_trash_picked(item: TrashItem) -> void:
 	item.z_index = 50
@@ -46,7 +43,7 @@ func _on_trash_bagged(item: TrashItem) -> void:
 
 func _reveal_key_item() -> void:
 	trash_spawner.add_child(key_item)
-	key_item.setup(key_item_data)
+	key_item.setup(MinigameManager.minigame_item(_room_data.minigame))
 	key_item.appear()
 
 func _on_key_item_picked(picked_key_item: KeyItem) -> void:

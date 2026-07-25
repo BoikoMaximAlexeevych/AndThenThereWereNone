@@ -6,10 +6,15 @@
 [ext_resource type="Script" uid="uid://qwdecdkifc0x" path="res://scripts/minigames/fight/types/fight_config.gd" id="2_16dfa"]
 [ext_resource type="Script" uid="uid://bod0ijxb1ubau" path="res://scripts/minigames/fight/cop.gd" id="3_7r7e7"]
 [ext_resource type="Script" uid="uid://coc0g50yww3dk" path="res://scripts/minigames/fight/hud.gd" id="4_7r7e7"]
+[ext_resource type="Texture2D" uid="uid://cdwiv0mrkah3d" path="res://assets/vegetation.png" id="6_42jvd"]
 
 [sub_resource type="Resource" id="Resource_u2qxj"]
 script = ExtResource("2_16dfa")
 metadata/_custom_type_script = "uid://qwdecdkifc0x"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42jvd"]
+atlas = ExtResource("6_42jvd")
+region = Rect2(0, 0, 87, 125.5)
 
 [node name="FightingMinigame" type="Node2D" unique_id=1786860364 node_paths=PackedStringArray("player", "enemy", "cop", "hud")]
 script = ExtResource("1_u2qxj")
@@ -19,33 +24,10 @@ enemy = NodePath("Fighters/Enemy")
 cop = NodePath("Fighters/Cop")
 hud = NodePath("HUD")
 
-[node name="Fighters" type="Node2D" parent="." unique_id=564347960]
-
-[node name="Player" type="Sprite2D" parent="Fighters" unique_id=1932991119]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(255, 210)
-texture = ExtResource("1_rb8wk")
-script = ExtResource("1_em1l7")
-
-[node name="Enemy" type="Sprite2D" parent="Fighters" unique_id=1364644458]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(385, 210)
-texture = ExtResource("1_rb8wk")
-script = ExtResource("1_em1l7")
-facingRight = false
-
-[node name="Cop" type="Node2D" parent="Fighters" unique_id=1691140151 node_paths=PackedStringArray("baton")]
-script = ExtResource("3_7r7e7")
-baton = NodePath("Baton")
-
-[node name="Sprite2D" type="Sprite2D" parent="Fighters/Cop" unique_id=1858373819]
-
-[node name="Baton" type="Node2D" parent="Fighters/Cop" unique_id=1549502218]
-
-[node name="BatonPoly" type="Polygon2D" parent="Fighters/Cop/Baton" unique_id=96965717]
-
-[node name="HUD" type="CanvasLayer" parent="." unique_id=33295977]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=33295977 node_paths=PackedStringArray("bar", "prompt")]
 script = ExtResource("4_7r7e7")
+bar = NodePath("Root/Bar")
+prompt = NodePath("Root/Prompt")
 
 [node name="Root" type="Control" parent="HUD" unique_id=381078876]
 layout_mode = 3
@@ -61,10 +43,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -150.0
+offset_left = -300.0
 offset_top = 100.0
-offset_right = 150.0
-offset_bottom = 118.0
+offset_right = 300.0
+offset_bottom = 140.0
 grow_horizontal = 2
 max_value = 1.0
 step = 0.0
@@ -77,9 +59,41 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -100.0
-offset_top = 130.0
+offset_top = 150.0
 offset_right = 100.0
-offset_bottom = 153.0
+offset_bottom = 173.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
 text = "CLICK!"
 horizontal_alignment = 1
+
+[node name="Fighters" type="Node2D" parent="." unique_id=564347960]
+
+[node name="Player" type="Sprite2D" parent="Fighters" unique_id=1932991119]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(832, 453)
+texture = ExtResource("1_rb8wk")
+script = ExtResource("1_em1l7")
+
+[node name="Enemy" type="Sprite2D" parent="Fighters" unique_id=1364644458]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(1081, 454)
+texture = ExtResource("1_rb8wk")
+script = ExtResource("1_em1l7")
+facingRight = false
+
+[node name="Cop" type="Node2D" parent="Fighters" unique_id=1691140151 node_paths=PackedStringArray("baton")]
+script = ExtResource("3_7r7e7")
+baton = NodePath("Baton")
+
+[node name="Sprite2D" type="Sprite2D" parent="Fighters/Cop" unique_id=1858373819]
+texture = SubResource("AtlasTexture_42jvd")
+
+[node name="Baton" type="Node2D" parent="Fighters/Cop" unique_id=1549502218]
+position = Vector2(14, -16)
+
+[node name="BatonPoly" type="Polygon2D" parent="Fighters/Cop/Baton" unique_id=96965717]
+color = Color(0.14117648, 0.10980392, 0.09019608, 1)
+polygon = PackedVector2Array(-2, 0, 2, 0, 2, -26, -2, -26)
+
+[connection signal="struck" from="Fighters/Cop" to="." method="_on_cop_struck"]

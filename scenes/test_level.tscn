@@ -163,7 +163,7 @@ texture = ExtResource("4_x4b8f")
 [sub_resource type="TileSet" id="TileSet_qcd3b"]
 sources/0 = SubResource("TileSetAtlasSource_ahbqi")
 
-[node name="Node2D" type="Node2D" unique_id=504130335]
+[node name="Node2D2" type="Node2D" unique_id=504130335]
 
 [node name="ParallaxLayers" type="Node2D" parent="." unique_id=915295930]
 position = Vector2(0, 32)

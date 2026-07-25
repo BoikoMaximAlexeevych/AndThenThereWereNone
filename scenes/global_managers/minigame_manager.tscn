@@ -1,9 +1,36 @@
 [gd_scene format=3 uid="uid://cpa5pk16qfdfv"]
 
 [ext_resource type="Script" uid="uid://cqi7bunumcle2" path="res://scripts/minigames/minigame_manager.gd" id="1_h7pwj"]
+[ext_resource type="Script" uid="uid://dvsf5casaabk2" path="res://scripts/minigames/minigame_data.gd" id="2_md8t7"]
+[ext_resource type="Texture2D" uid="uid://dccluci170a11" path="res://assets/trash.png" id="3_md8t7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1gi3"]
+atlas = ExtResource("3_md8t7")
+region = Rect2(0, 64.816345, 16.548416, 15.183655)
+
+[sub_resource type="Resource" id="Resource_f4psd"]
+script = ExtResource("2_md8t7")
+icon = SubResource("AtlasTexture_n1gi3")
+scene = 3
+metadata/_custom_type_script = "uid://dvsf5casaabk2"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_434rd"]
+atlas = ExtResource("3_md8t7")
+region = Rect2(63.46257, 63.028664, 16.53743, 16.971336)
+
+[sub_resource type="Resource" id="Resource_78vsk"]
+script = ExtResource("2_md8t7")
+icon = SubResource("AtlasTexture_434rd")
+scene = 3
+metadata/_custom_type_script = "uid://dvsf5casaabk2"
 
 [node name="MinigameManager" type="Node2D" unique_id=619751485 node_paths=PackedStringArray("canvas", "leftLabel")]
+z_index = 100
 script = ExtResource("1_h7pwj")
+minigames_data = Dictionary[int, ExtResource("2_md8t7")]({
+0: SubResource("Resource_f4psd"),
+1: SubResource("Resource_78vsk")
+})
 canvas = NodePath("CanvasLayer")
 leftLabel = NodePath("CanvasLayer/ColorRect2/Label")
 
