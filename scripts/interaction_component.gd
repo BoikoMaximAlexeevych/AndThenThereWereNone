@@ -11,6 +11,8 @@ func _ready() -> void:
 func update():
 	if input_component.enter_pressed and character_can_enter:
 		SignalBus.player_enters_room.emit(available_room)
+	if input_component.monologue_skip_pressed:
+		SignalBus.monologue_forward.emit()
 
 func _on_character_can_enter_toggled(room: HouseTransitionArea):
 	character_can_enter = not character_can_enter

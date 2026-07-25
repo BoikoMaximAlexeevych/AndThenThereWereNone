@@ -8,3 +8,5 @@ signal hide_hint()
 signal character_can_enter_toggled(available_room: HouseTransitionArea)
 
 signal player_enters_room(room: HouseTransitionArea)
+
+signal monologue_forward

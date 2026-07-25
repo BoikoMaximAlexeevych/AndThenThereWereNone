@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bbuc1tf2ayqs6"]
+
+[ext_resource type="Script" uid="uid://bpfqj4joxpmu6" path="res://scripts/monologue_window.gd" id="1_b3ej1"]
+[ext_resource type="Theme" uid="uid://cwvhfd302rriu" path="res://resources/game_theme.tres" id="2_l5nnf"]
+
+[sub_resource type="Animation" id="Animation_nn6r8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l5nnf"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.45062524, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_ga0k8"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.17075521, 1),
+"update": 0,
+"values": [Vector2(0, 400), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nn6r8"]
+_data = {
+&"RESET": SubResource("Animation_nn6r8"),
+&"hide": SubResource("Animation_l5nnf"),
+&"show": SubResource("Animation_ga0k8")
+}
+
+[node name="monologue_window" type="CanvasLayer" unique_id=1111921619]
+layer = 99
+script = ExtResource("1_b3ej1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=406302170]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+mouse_filter = 2
+theme_override_constants/margin_left = 450
+theme_override_constants/margin_right = 450
+theme_override_constants/margin_bottom = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=877262510]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_l5nnf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer" unique_id=190797144]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_l5nnf")
+theme_override_font_sizes/normal_font_size = 56
+text = "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=201937046]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=792236514]
+libraries/ = SubResource("AnimationLibrary_nn6r8")
+
+[node name="Timer" type="Timer" parent="." unique_id=1385984304]
+wait_time = 0.5

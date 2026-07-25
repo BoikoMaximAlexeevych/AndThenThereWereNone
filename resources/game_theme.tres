@@ -2,6 +2,28 @@
 
 [ext_resource type="FontFile" uid="uid://c53fmek8kv8nf" path="res://assets/fonts/SHPinscher-Regular.otf" id="1_6oscl"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga0k8"]
+bg_color = Color(0.17775077, 0.17775077, 0.17775077, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5nnf"]
+bg_color = Color(0.111456275, 0.118201494, 0.15473306, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.0458429, 0.04653946, 0.05279708, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [resource]
+Label/fonts/font = ExtResource("1_6oscl")
+Panel/styles/panel = SubResource("StyleBoxFlat_ga0k8")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_l5nnf")
 RichTextLabel/font_sizes/normal_font_size = 22
 RichTextLabel/fonts/normal_font = ExtResource("1_6oscl")
