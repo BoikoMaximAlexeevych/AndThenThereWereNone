@@ -1,15 +1,8 @@
 extends CanvasLayer
 
-enum SCENES {
-	MENU, 
-	MAIN, 
-	ROOM1,
-	FIGHTING_MINIGAME,
-}
+var next_scene: Globals.SCENES
 
-var next_scene: SCENES
-
-@export var scene_data: Dictionary[SCENES, PackedScene] = {}
+@export var scene_data: Dictionary[Globals.SCENES, PackedScene] = {}
 
 @onready var animPlayer: AnimationPlayer = $AnimationPlayer
 @onready var rect = $ColorRect
@@ -32,7 +25,7 @@ func minigame_mode(item_tex: Texture2D) -> void:
 	current_mode = TRANSITION_MODES.MINIGAME
 	item_sprite.texture = item_tex
 
-func change_scene_to(scene: SCENES) -> void:
+func change_scene_to(scene: Globals.SCENES) -> void:
 	next_scene = scene
 	
 	if animPlayer.is_playing():

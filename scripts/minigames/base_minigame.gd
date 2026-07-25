@@ -1,7 +1,7 @@
 class_name Minigame
 extends Node2D
 
-@export var minigame_id: MinigameManager.MINIGAMES
+@export var minigame_id: Globals.MINIGAMES
 
 func finish() -> void:
 	MinigameManager.set_minigame_finished(minigame_id)

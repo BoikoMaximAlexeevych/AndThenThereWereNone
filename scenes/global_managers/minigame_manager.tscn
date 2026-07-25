@@ -21,7 +21,7 @@ region = Rect2(63.46257, 63.028664, 16.53743, 16.971336)
 [sub_resource type="Resource" id="Resource_78vsk"]
 script = ExtResource("2_md8t7")
 icon = SubResource("AtlasTexture_434rd")
-scene = 3
+scene = 4
 metadata/_custom_type_script = "uid://dvsf5casaabk2"
 
 [node name="MinigameManager" type="Node2D" unique_id=619751485 node_paths=PackedStringArray("canvas", "leftLabel")]

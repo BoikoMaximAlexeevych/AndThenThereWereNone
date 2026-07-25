@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dwtko6t1ricj0"]
+
+[ext_resource type="Script" uid="uid://dbwm150w74f7a" path="res://scripts/minigames/fishing/fishing_minigame.gd" id="1_oqqsy"]
+[ext_resource type="Script" uid="uid://cmg4n36k6xstq" path="res://scripts/minigames/fishing/fishing_config.gd" id="2_536fv"]
+[ext_resource type="Texture2D" uid="uid://cl2p082jino47" path="res://assets/icon.svg" id="2_ihnih"]
+[ext_resource type="Texture2D" uid="uid://dccluci170a11" path="res://assets/trash.png" id="2_kib8d"]
+[ext_resource type="Script" uid="uid://dqxcvnai5b02x" path="res://scripts/minigames/fishing/reel_game.gd" id="3_45bk5"]
+
+[sub_resource type="Resource" id="Resource_kib8d"]
+script = ExtResource("2_536fv")
+catch_time = 1.5
+gap_penalty_per_sec = 0.2
+hook_lift = 5.0
+hook_gravity = 3.0
+hook_max_speed = 0.7
+fish_speed = 1.0
+metadata/_custom_type_script = "uid://cmg4n36k6xstq"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_685lo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_536fv"]
+atlas = ExtResource("2_kib8d")
+region = Rect2(50.03827, 62.926155, 12.4483795, 16.996834)
+
+[node name="FishingMinigame" type="Node2D" unique_id=103243580 node_paths=PackedStringArray("cast_point_node", "boat", "fisher", "line", "bobber", "big_fish", "reel", "fish_count", "prompt")]
+script = ExtResource("1_oqqsy")
+cast_point_node = NodePath("Game/Boat/Fisher/CastPoint")
+boat = NodePath("Game/Boat")
+fisher = NodePath("Game/Boat/Fisher")
+line = NodePath("Game/Line")
+bobber = NodePath("Game/Bobber")
+big_fish = NodePath("Game/BigFish")
+reel = NodePath("UI/ReelGame")
+fish_count = NodePath("UI/FishCount")
+prompt = NodePath("UI/Prompt")
+config = SubResource("Resource_kib8d")
+minigame_id = 1
+
+[node name="Background" type="Node2D" parent="." unique_id=1133778312]
+
+[node name="Water" type="AnimatedSprite2D" parent="Background" unique_id=1805997464]
+sprite_frames = SubResource("SpriteFrames_685lo")
+
+[node name="Game" type="Node2D" parent="." unique_id=267391934]
+
+[node name="Boat" type="Sprite2D" parent="Game" unique_id=573951847]
+position = Vector2(498, 595.5)
+scale = Vector2(5.95, 3.3875)
+texture = ExtResource("2_kib8d")
+
+[node name="Fisher" type="Sprite2D" parent="Game/Boat" unique_id=756727651]
+position = Vector2(-2.0168047, -53.57934)
+scale = Vector2(0.14495802, 0.48394248)
+texture = ExtResource("2_ihnih")
+
+[node name="CastPoint" type="Node2D" parent="Game/Boat/Fisher" unique_id=251256339]
+position = Vector2(1275.362, -117.7292)
+
+[node name="Line" type="Line2D" parent="Game" unique_id=1369036475]
+width = 1.5
+default_color = Color(0.9019608, 0.9019608, 0.9490196, 0.8)
+
+[node name="Bobber" type="Sprite2D" parent="Game" unique_id=2132633350]
+texture = SubResource("AtlasTexture_536fv")
+
+[node name="BigFish" type="Sprite2D" parent="Game" unique_id=1996530493]
+position = Vector2(1913.0001, 1087)
+scale = Vector2(3.4375, 3.375)
+texture = ExtResource("2_ihnih")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=441025109]
+
+[node name="ReelGame" type="Node2D" parent="UI" unique_id=1079159290]
+position = Vector2(1627, 387)
+script = ExtResource("3_45bk5")
+
+[node name="FishCount" type="Label" parent="UI" unique_id=685587467]
+offset_left = 62.0
+offset_top = 41.0
+offset_right = 413.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 40
+text = "Fishes caught: "
+
+[node name="Prompt" type="Label" parent="UI" unique_id=1440006478]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -80.0
+offset_right = 72.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Click - start fishing"
+
+[connection signal="caught" from="UI/ReelGame" to="." method="_on_reel_game_caught"]

@@ -18,9 +18,9 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-MinigameManager="*uid://cpa5pk16qfdfv"
 Globals="*uid://cv0fvi0vw4wec"
 SceneChangeManager="*uid://dtgv1hclg45rg"
+MinigameManager="*uid://cpa5pk16qfdfv"
 SignalBus="*uid://c6xodcpo3a7r4"
 
 [display]
