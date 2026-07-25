@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ojt2uope2f51"]
+
+[ext_resource type="Script" uid="uid://cbbcj6c4q5ws3" path="res://scripts/trash_item.gd" id="1_a56e1"]
+[ext_resource type="Script" uid="uid://b3mo3rmprkujg" path="res://scripts/flight_component.gd" id="2_6eadl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whxsk"]
+size = Vector2(16, 16)
+
+[node name="Node2D" type="Area2D" unique_id=1774787538 node_paths=PackedStringArray("flight_component")]
+script = ExtResource("1_a56e1")
+flight_component = NodePath("FlightComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=934330503]
+shape = SubResource("RectangleShape2D_whxsk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1204338279]
+
+[node name="FlightComponent" type="Node" parent="." unique_id=590340138 node_paths=PackedStringArray("body")]
+script = ExtResource("2_6eadl")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://b3mo3rmprkujg"

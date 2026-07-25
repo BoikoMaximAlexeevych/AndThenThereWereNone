@@ -1,0 +1,290 @@
+[gd_scene format=3 uid="uid://dtgv1hclg45rg"]
+
+[ext_resource type="Script" uid="uid://b4ua3wclargf2" path="res://scripts/scene_change_manager.gd" id="1_faiqi"]
+[ext_resource type="Shader" uid="uid://b7hkoguhi0vp4" path="res://resources/materials/scene_change_manager.gdshader" id="1_r44wu"]
+[ext_resource type="PackedScene" uid="uid://toa36wpelqr1" path="res://scenes/ui/main_menu.tscn" id="2_xcqct"]
+[ext_resource type="Texture2D" uid="uid://dccluci170a11" path="res://assets/trash.png" id="3_37tke"]
+[ext_resource type="PackedScene" uid="uid://ds6k1ibcod7rd" path="res://scenes/game.tscn" id="3_plgh4"]
+[ext_resource type="FontFile" uid="uid://c53fmek8kv8nf" path="res://assets/fonts/SHPinscher-Regular.otf" id="4_e5huv"]
+[ext_resource type="PackedScene" uid="uid://ciy0sd8llphxg" path="res://scenes/room.tscn" id="4_iguyk"]
+[ext_resource type="PackedScene" uid="uid://cpfrguwtmspmj" path="res://scenes/minigames/fighting_minigame.tscn" id="5_plgh4"]
+
+[sub_resource type="Animation" id="Animation_faiqi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/circle_expansion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../to minigame transition/key item sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../to minigame transition/key item sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../to minigame transition/ColorRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../to minigame transition/ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../to minigame transition/RichTextLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../to minigame transition/key item sprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e5huv"]
+resource_name = "minigame_transition"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../to minigame transition/key item sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.36666667, 1),
+"transitions": PackedFloat32Array(0.2679435, 1),
+"update": 0,
+"values": [Vector2(300, 1300), Vector2(300, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../to minigame transition/key item sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36666667, 0.5, 0.6333333, 0.8333334, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1, 0.42044842, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(-10, 10), Vector2(10, 10), Vector2(-10, 10), Vector2(10, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../to minigame transition/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.13333334, 0.4, 2.6333334, 2.8000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../to minigame transition/ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 2.8333335, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../to minigame transition/RichTextLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5666667, 1.8333334, 2.6333334, 2.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../to minigame transition/key item sprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.033333335, 2.5333333, 2.8333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.2666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_new_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r44wu"]
+resource_name = "transition"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/circle_expansion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(3.0314324, 1, 0.43527526, 1),
+"update": 0,
+"values": [1.499999966472, 0.0, 0.0, 1.499999966472]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.51),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_new_scene"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_faiqi"]
+_data = {
+&"RESET": SubResource("Animation_faiqi"),
+&"minigame_transition": SubResource("Animation_e5huv"),
+&"transition": SubResource("Animation_r44wu")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7qx3"]
+shader = ExtResource("1_r44wu")
+shader_parameter/circle_expansion = 0.0
+shader_parameter/color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faiqi"]
+atlas = ExtResource("3_37tke")
+region = Rect2(0, 64, 16, 16)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=205171973]
+layer = 100
+script = ExtResource("1_faiqi")
+scene_data = Dictionary[int, PackedScene]({
+0: ExtResource("2_xcqct"),
+1: ExtResource("3_plgh4"),
+2: ExtResource("4_iguyk"),
+3: ExtResource("5_plgh4")
+})
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=288498853]
+root_node = NodePath("../ColorRect")
+libraries/ = SubResource("AnimationLibrary_faiqi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1294176088]
+material = SubResource("ShaderMaterial_k7qx3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="to minigame transition" type="Node" parent="." unique_id=40704400]
+
+[node name="ColorRect" type="ColorRect" parent="to minigame transition" unique_id=1738255779]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="key item sprite" type="Sprite2D" parent="to minigame transition" unique_id=1395656431]
+position = Vector2(-200, 0)
+scale = Vector2(10, 10)
+texture = SubResource("AtlasTexture_faiqi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="to minigame transition" unique_id=1844430287]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1252.0
+offset_top = -115.0
+offset_bottom = 115.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_e5huv")
+theme_override_font_sizes/normal_font_size = 96
+text = "I THINK I KNOW WHAT HAPPENED..."
+fit_content = true
+vertical_alignment = 1

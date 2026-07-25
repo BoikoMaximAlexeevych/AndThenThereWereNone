@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://ciy0sd8llphxg"]
+
+[ext_resource type="Script" uid="uid://cxflte8p3kaxr" path="res://scripts/room.gd" id="1_ffxv4"]
+[ext_resource type="PackedScene" uid="uid://bxu7qo8x82qu3" path="res://scenes/room_environment.tscn" id="3_jn645"]
+[ext_resource type="Script" uid="uid://cmo0o8o5ujuvq" path="res://scripts/trash_spawner.gd" id="4_14vil"]
+[ext_resource type="Texture2D" uid="uid://cl2p082jino47" path="res://assets/icon.svg" id="5_qvc4m"]
+[ext_resource type="Script" uid="uid://dub3sh6ldvg2f" path="res://scripts/furniture_spawner.gd" id="7_qtoah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(220.75, 138.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
+size = Vector2(170.25, 99.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+resource_local_to_scene = true
+size = Vector2(303.25, 47.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(89.75, 195)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(290.5, 50.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
+size = Vector2(67.75, 186.75)
+
+[node name="room" type="Node2D" unique_id=417347654 node_paths=PackedStringArray("environment", "trash_spawner", "furniture_spawner", "trash_bin_pos")]
+script = ExtResource("1_ffxv4")
+environment = NodePath("CanvasLayer/SubViewportContainer3/SubViewport/Env")
+trash_spawner = NodePath("CanvasLayer/SubViewportContainer3/SubViewport/Trash Spawner")
+furniture_spawner = NodePath("CanvasLayer/SubViewportContainer3/SubViewport/FurnitureSpawner")
+trash_bin_pos = NodePath("CanvasLayer/SubViewportContainer3/SubViewport/Sprite2D/Marker2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=503137041]
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="CanvasLayer" unique_id=965913212]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+stretch = true
+stretch_shrink = 4
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer3" unique_id=1294637750]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="Env" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=502905463 instance=ExtResource("3_jn645")]
+position = Vector2(240, 135)
+
+[node name="SpawnShape" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=635806250]
+position = Vector2(247.875, 134.625)
+shape = SubResource("RectangleShape2D_g4v7s")
+disabled = true
+debug_color = Color(1, 0.52630603, 0.54737455, 0.41960785)
+
+[node name="Trash Spawner" type="Node2D" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=2112646061 node_paths=PackedStringArray("shape_source")]
+script = ExtResource("4_14vil")
+shape_source = NodePath("../SpawnShape")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=681675248]
+position = Vector2(61, 64.25002)
+rotation = -4.4505897
+scale = Vector2(0.55859375, 0.6972656)
+texture = ExtResource("5_qvc4m")
+
+[node name="Marker2D" type="Marker2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/Sprite2D" unique_id=422792757]
+position = Vector2(2.2377622, -61.66947)
+
+[node name="FurnitureSpawnShape" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=1001895845]
+position = Vector2(251.625, 135.125)
+shape = SubResource("RectangleShape2D_fcnqv")
+disabled = true
+debug_color = Color(0.99196345, 0.99652684, 0.586738, 0.41960785)
+
+[node name="FurnitureSpawner" type="Node2D" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=1538810437 node_paths=PackedStringArray("shape_source")]
+script = ExtResource("7_qtoah")
+shape_source = NodePath("../FurnitureSpawnShape")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer/SubViewportContainer3/SubViewport" unique_id=1988837217]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/StaticBody2D" unique_id=1835707596]
+position = Vector2(248.875, 239.125)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/StaticBody2D" unique_id=1228154734]
+position = Vector2(64, 134.5)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/StaticBody2D" unique_id=1112597023]
+position = Vector2(246.5, 29.625)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="CanvasLayer/SubViewportContainer3/SubViewport/StaticBody2D" unique_id=921760226]
+position = Vector2(402.375, 138.625)
+shape = SubResource("RectangleShape2D_3gngh")
