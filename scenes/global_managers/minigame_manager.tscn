@@ -6,7 +6,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1gi3"]
 atlas = ExtResource("3_md8t7")
-region = Rect2(0, 64.816345, 16.548416, 15.183655)
+region = Rect2(32, 80, 32, 32)
 
 [sub_resource type="Resource" id="Resource_f4psd"]
 script = ExtResource("2_md8t7")
@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://dvsf5casaabk2"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_434rd"]
 atlas = ExtResource("3_md8t7")
-region = Rect2(63.46257, 63.028664, 16.53743, 16.971336)
+region = Rect2(64, 80, 32, 32.971336)
 
 [sub_resource type="Resource" id="Resource_78vsk"]
 script = ExtResource("2_md8t7")
@@ -24,42 +24,13 @@ icon = SubResource("AtlasTexture_434rd")
 scene = 4
 metadata/_custom_type_script = "uid://dvsf5casaabk2"
 
-[node name="MinigameManager" type="Node2D" unique_id=619751485 node_paths=PackedStringArray("canvas", "leftLabel")]
+[node name="MinigameManager" type="Node2D" unique_id=619751485]
 z_index = 100
 script = ExtResource("1_h7pwj")
 minigames_data = Dictionary[int, ExtResource("2_md8t7")]({
 0: SubResource("Resource_f4psd"),
 1: SubResource("Resource_78vsk")
 })
-canvas = NodePath("CanvasLayer")
-leftLabel = NodePath("CanvasLayer/ColorRect2/Label")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1988992589]
 visible = false
-
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=998456321]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="CanvasLayer/ColorRect2" unique_id=713433934]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -11.5
-offset_right = 78.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 100
-text = "There were nine left"
-horizontal_alignment = 1
-vertical_alignment = 1

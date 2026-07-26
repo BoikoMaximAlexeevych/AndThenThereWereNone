@@ -37,4 +37,8 @@ func update():
 				body.global_position + camera_offset,
 				0.03
 			)
-	
+func disable():
+	pass
+
+func enable():
+	camera.make_current()

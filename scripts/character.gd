@@ -31,3 +31,9 @@ func must_smoke() -> void:
 
 func die () -> void: 
 	animation_state_component.dead = true
+
+func disable_camera():
+	pass
+func enable_camera():
+	camera_control_component.enable()
+	pass

@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var next_scene: Globals.SCENES
 
-@export var scene_data: Dictionary[Globals.SCENES, PackedScene] = {}
+@export var scene_data: Dictionary[Globals.SCENES, PackedScene] 
 
 @onready var animPlayer: AnimationPlayer = $AnimationPlayer
 @onready var rect = $ColorRect

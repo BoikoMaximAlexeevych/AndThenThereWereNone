@@ -14,10 +14,17 @@ var character_lines: Array[String] = [
 	"It's only natural that you get a bit desensitized in a long run",
 	"But your home tells stories of both your life and death",
 	"If you so happen to be dead, of course.",
-	# ===7-9====
+	# ===7-10====
 	"I bet this one picked an unfortunate fight",
 	"At least he died doing what he loved most",
-	"Or maybe shortly after doing what he loved most."
+	"Or maybe shortly after doing what he loved most.",
+	"And then there were two... Two houses to go",
+	# ====11 - 15=====
+	"That was one weird death",
+	"Most of us don't even have lives this unusual",
+	"Seems like this guy got all the world's whimsy to himself.",
+	"And then there's one - one house to go.",
+	"Just let me take a break."
 ]
 
 var queue: Array[String]

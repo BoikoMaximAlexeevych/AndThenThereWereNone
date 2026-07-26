@@ -5,6 +5,7 @@ extends Control
 var can_quit: bool = false
 
 func _ready() -> void:
+	await get_tree().create_timer(2.)
 	animation_player.play("appear")
 
 func allow_quit() -> void:

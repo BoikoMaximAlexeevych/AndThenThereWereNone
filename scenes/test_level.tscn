@@ -583,7 +583,7 @@ scale = Vector2(1, 1.0000002)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="Marker2D" type="Marker2D" parent="Houses/Angler\'s house/CameraCaptureArea" unique_id=1145334712]
-position = Vector2(1, -15.000002)
+position = Vector2(0, 8.999998)
 
 [node name="Fighter\'s house" type="Sprite2D" parent="Houses" unique_id=15642902]
 position = Vector2(-50, -111.5)
@@ -606,7 +606,7 @@ shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(1, 0.6677011, 0.977392, 0.41960785)
 
 [node name="Marker2D" type="Marker2D" parent="Houses/Fighter\'s house/CameraCaptureArea" unique_id=1290087439]
-position = Vector2(1, 7.499998)
+position = Vector2(0, 31.499998)
 scale = Vector2(1, 1.0000002)
 
 [node name="hunter\'s house" type="Sprite2D" parent="Houses" unique_id=57198141]

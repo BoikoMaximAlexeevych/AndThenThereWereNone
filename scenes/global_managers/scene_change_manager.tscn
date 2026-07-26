@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ciy0sd8llphxg" path="res://scenes/room.tscn" id="4_iguyk"]
 [ext_resource type="PackedScene" uid="uid://cpfrguwtmspmj" path="res://scenes/minigames/fighting_minigame.tscn" id="5_plgh4"]
 [ext_resource type="PackedScene" uid="uid://dwtko6t1ricj0" path="res://scenes/minigames/fishing_minigame.tscn" id="6_iguyk"]
+[ext_resource type="PackedScene" uid="uid://c2ri6j1uhpdt" path="res://scenes/credits.tscn" id="6_oxax7"]
 
 [sub_resource type="Animation" id="Animation_faiqi"]
 length = 0.001
@@ -307,7 +308,8 @@ scene_data = Dictionary[int, PackedScene]({
 1: ExtResource("3_plgh4"),
 2: ExtResource("4_iguyk"),
 3: ExtResource("5_plgh4"),
-4: ExtResource("6_iguyk")
+4: ExtResource("6_iguyk"),
+5: ExtResource("6_oxax7")
 })
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=288498853]

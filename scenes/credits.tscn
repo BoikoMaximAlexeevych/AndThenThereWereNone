@@ -76,7 +76,7 @@ tracks/1/path = NodePath("VBoxContainer/RichTextLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.53333336),
+"times": PackedFloat32Array(0.63333327, 1.5),
 "transitions": PackedFloat32Array(0.1961461, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]

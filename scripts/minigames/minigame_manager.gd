@@ -1,8 +1,6 @@
 extends Node2D
 
 @export var minigames_data: Dictionary[Globals.MINIGAMES, MinigameData] = {}
-@export var canvas: CanvasLayer
-@export var leftLabel: Label
 
 var NUMBERS_IN_STRING = ["were none", "was one", "were two", "were three", "four", "five"]
 
@@ -18,11 +16,8 @@ func is_minigame_finished(minigame_id: Globals.MINIGAMES):
 func set_minigame_finished(minigame_id: Globals.MINIGAMES):
 	_finished_minigames.set(minigame_id, true)
 	
-	canvas.show()
-	
 	var leftAmount := minigames_data.size() - _finished_minigames.size()
 	var text = "And then there " + NUMBERS_IN_STRING[leftAmount+1]
 	
 	SceneChangeManager.return_mode(text)
-
 	SceneChangeManager.change_scene_to(Globals.SCENES.MAIN)

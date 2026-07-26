@@ -1,44 +1,15 @@
 [gd_resource type="Resource" script_class="RoomData" format=3 uid="uid://crfxxvap51t38"]
 
 [ext_resource type="Script" uid="uid://dh6aux36cyex6" path="res://scripts/RoomData.gd" id="1_cafr0"]
-[ext_resource type="Script" uid="uid://drdjkihkn1k8i" path="res://scripts/furniture_data.gd" id="1_j82eq"]
+[ext_resource type="Resource" uid="uid://c2f0fwkg60c0v" path="res://resources/furniture_set.tres" id="1_oclng"]
 [ext_resource type="Texture2D" uid="uid://dccluci170a11" path="res://assets/trash.png" id="2_5d8si"]
-[ext_resource type="Texture2D" uid="uid://ba5hr7krwyhhi" path="res://assets/funSS.png" id="2_e57ku"]
-[ext_resource type="TileSet" uid="uid://ddub8dxu5qv50" path="res://resources/rooms/room_tilesets/red_room_tileset.tres" id="2_ee8q3"]
-[ext_resource type="Script" uid="uid://br8kbvbp02nnw" path="res://scripts/furniture_set.gd" id="3_c6x2c"]
+[ext_resource type="TileSet" uid="uid://b637s5o7rc7rg" path="res://resources/rooms/room_tilesets/blue_room_tile_set.tres" id="5_gyry4"]
 [ext_resource type="Script" uid="uid://cykcge0mxxup1" path="res://scripts/trash_set_data.gd" id="5_oclng"]
 [ext_resource type="Script" uid="uid://1t1bbf6xq3jh" path="res://scripts/trash_item_data.gd" id="6_0v47x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j82eq"]
-atlas = ExtResource("2_e57ku")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="Resource" id="Resource_0v47x"]
-script = ExtResource("1_j82eq")
-texture = SubResource("AtlasTexture_j82eq")
-mass = 5.0
-friction = 0.3
-metadata/_custom_type_script = "uid://drdjkihkn1k8i"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e57ku"]
-atlas = ExtResource("2_e57ku")
-region = Rect2(32, 0, 32, 48)
-
-[sub_resource type="Resource" id="Resource_gyry4"]
-script = ExtResource("1_j82eq")
-texture = SubResource("AtlasTexture_e57ku")
-mass = 10.0
-friction = 0.4
-metadata/_custom_type_script = "uid://drdjkihkn1k8i"
-
-[sub_resource type="Resource" id="Resource_oclng"]
-script = ExtResource("3_c6x2c")
-furnitureTypes = Array[ExtResource("1_j82eq")]([SubResource("Resource_0v47x"), SubResource("Resource_gyry4")])
-metadata/_custom_type_script = "uid://br8kbvbp02nnw"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_n21ju"]
 atlas = ExtResource("2_5d8si")
-region = Rect2(32, 16, 16, 16)
+region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="Resource" id="Resource_qm7pg"]
 script = ExtResource("6_0v47x")
@@ -47,23 +18,59 @@ metadata/_custom_type_script = "uid://1t1bbf6xq3jh"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6bi88"]
 atlas = ExtResource("2_5d8si")
-region = Rect2(16, 32, 16, 16)
+region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="Resource" id="Resource_3jewf"]
 script = ExtResource("6_0v47x")
 texture = SubResource("AtlasTexture_6bi88")
 metadata/_custom_type_script = "uid://1t1bbf6xq3jh"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyry4"]
+atlas = ExtResource("2_5d8si")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="Resource" id="Resource_j82eq"]
+script = ExtResource("6_0v47x")
+texture = SubResource("AtlasTexture_gyry4")
+metadata/_custom_type_script = "uid://1t1bbf6xq3jh"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7e7s"]
+atlas = ExtResource("2_5d8si")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_c6x2c"]
+script = ExtResource("6_0v47x")
+texture = SubResource("AtlasTexture_g7e7s")
+metadata/_custom_type_script = "uid://1t1bbf6xq3jh"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4cnw"]
+atlas = ExtResource("2_5d8si")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="Resource" id="Resource_ohlbm"]
+script = ExtResource("6_0v47x")
+texture = SubResource("AtlasTexture_e4cnw")
+metadata/_custom_type_script = "uid://1t1bbf6xq3jh"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obk3f"]
+atlas = ExtResource("2_5d8si")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="Resource" id="Resource_w5s0t"]
+script = ExtResource("6_0v47x")
+texture = SubResource("AtlasTexture_obk3f")
+metadata/_custom_type_script = "uid://1t1bbf6xq3jh"
+
 [sub_resource type="Resource" id="Resource_ajijp"]
 script = ExtResource("5_oclng")
-trash_types = Array[ExtResource("6_0v47x")]([SubResource("Resource_qm7pg"), SubResource("Resource_3jewf")])
+trash_types = Array[ExtResource("6_0v47x")]([SubResource("Resource_qm7pg"), SubResource("Resource_3jewf"), SubResource("Resource_j82eq"), SubResource("Resource_c6x2c"), SubResource("Resource_ohlbm"), SubResource("Resource_w5s0t")])
 min_distance = 32.0
 metadata/_custom_type_script = "uid://cykcge0mxxup1"
 
 [resource]
 script = ExtResource("1_cafr0")
-tile_set = ExtResource("2_ee8q3")
+tile_set = ExtResource("5_gyry4")
 trash_set = SubResource("Resource_ajijp")
-furniture_set = SubResource("Resource_oclng")
+furniture_set = ExtResource("1_oclng")
 minigame = 1
 metadata/_custom_type_script = "uid://dh6aux36cyex6"
