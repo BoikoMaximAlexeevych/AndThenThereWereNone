@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b5v6gqod2hy0p" path="res://scripts/draggable_furniture.gd" id="1_4kluj"]
 [ext_resource type="Script" uid="uid://bred8bsbyab6v" path="res://scripts/drag_component.gd" id="2_2dfpt"]
 [ext_resource type="Script" uid="uid://bi3maui86kxxb" path="res://scripts/draw_component.gd" id="3_jcvp6"]
+[ext_resource type="AudioStream" uid="uid://doqqgbremy4xa" path="res://assets/sfx/metallic_nblk.wav" id="4_jttqg"]
 
 [node name="draggable_furniture" type="RigidBody2D" unique_id=1359761671 node_paths=PackedStringArray("area", "drag_component") groups=["FurnitureItems"]]
 input_pickable = true
@@ -32,3 +33,6 @@ modulate = Color(0, 0, 0, 0.42745098)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=476548334]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1355941036]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1471040767]
+stream = ExtResource("4_jttqg")

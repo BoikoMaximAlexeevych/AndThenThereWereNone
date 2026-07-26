@@ -13,6 +13,9 @@ enum Phase { CAST, WAIT_BITE, REEL, OTHER }
 @export var prompt: Label
 @export var config: FishingConfig
 
+@onready var animation_player: AnimationPlayer = $CanvasLayer/SubViewportContainer/SubViewport/AnimationPlayer
+
+
 const BIGFISH_LUNGE_OFFSET := Vector2(46.0, -28.0)
 const CATCH_PAUSE := 0.5
 
@@ -62,22 +65,15 @@ func _big_fish_sequence() -> void:
 	line.hide()
 	bobber.hide()
 	big_fish.show()
-	var lunge := boat.global_position + BIGFISH_LUNGE_OFFSET
-	var tween := create_tween()
-	tween.tween_property(big_fish, "global_position", lunge, config.bigfish_rise_time) \
-		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(_eat_boat)
+	_eat_boat()
 
 func _eat_boat() -> void:
-	var tween := create_tween()
-	tween.tween_property(big_fish, "global_position", boat.global_position, config.bigfish_eat_time) \
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	tween.parallel().tween_property(boat, "modulate:a", 0.0, config.bigfish_eat_time)
-	tween.parallel().tween_property(fisher, "modulate:a", 0.0, config.bigfish_eat_time)
-	tween.tween_callback(finish)
+	animation_player.play("eat_boat")
+	await animation_player.animation_finished
+	finish()
 
 func _update_count() -> void:
-	fish_count.text = "Fishes caught: %d/%d" % [_caught, config.fish_to_catch]
+	fish_count.text = "Fish caught: %d/%d" % [_caught, config.fish_to_catch]
 
 func _on_reel_game_caught() -> void:
 	if _phase != Phase.REEL:
@@ -88,6 +84,6 @@ func _on_reel_game_caught() -> void:
 	if _caught >= config.fish_to_catch:
 		_big_fish_sequence()
 	else:
-		prompt.text = "Поймал!"
+		prompt.text = "GOT IT!"
 		await get_tree().create_timer(CATCH_PAUSE).timeout
 		_enter_cast()

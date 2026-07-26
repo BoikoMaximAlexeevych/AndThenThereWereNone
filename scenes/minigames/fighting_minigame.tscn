@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://2bsbrgbwfrrk" path="res://assets/fighting_tileset.png" id="3_d5ajt"]
 [ext_resource type="Script" uid="uid://coc0g50yww3dk" path="res://scripts/minigames/fight/hud.gd" id="4_7r7e7"]
 [ext_resource type="Theme" uid="uid://cwvhfd302rriu" path="res://resources/game_theme.tres" id="8_d5ajt"]
+[ext_resource type="AudioStream" uid="uid://bmu1dux7iuxu8" path="res://assets/music/and then they were playing minigames.wav" id="9_2eow3"]
 
 [sub_resource type="Resource" id="Resource_u2qxj"]
 script = ExtResource("2_16dfa")
-click_gain = 0.1
 metadata/_custom_type_script = "uid://qwdecdkifc0x"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d5ajt"]
@@ -134,5 +134,10 @@ theme = ExtResource("8_d5ajt")
 theme_override_font_sizes/font_size = 64
 text = "CLICK!"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=402624465]
+stream = ExtResource("9_2eow3")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="struck" from="CanvasLayer/SubViewportContainer/SubViewport/Fighters/Cop" to="." method="_on_cop_struck"]

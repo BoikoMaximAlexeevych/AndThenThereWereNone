@@ -41,4 +41,5 @@ func disable():
 	pass
 
 func enable():
+	camera.global_position = body.global_position + Vector2(0., -32)
 	camera.make_current()

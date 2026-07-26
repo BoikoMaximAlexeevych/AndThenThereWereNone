@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cwvhfd302rriu" path="res://resources/game_theme.tres" id="1_0bpdh"]
 [ext_resource type="Script" uid="uid://ddkg08nb2upv3" path="res://scripts/credits.gd" id="1_2ckv8"]
+[ext_resource type="AudioStream" uid="uid://c77c7270hareh" path="res://assets/music/and then there were tears.wav" id="3_0ctdu"]
 
 [sub_resource type="Animation" id="Animation_0bpdh"]
 length = 0.001
@@ -331,3 +332,7 @@ text = "PRESS ANY KEY TO QUIT..."
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=630490065]
+stream = ExtResource("3_0ctdu")
+autoplay = true

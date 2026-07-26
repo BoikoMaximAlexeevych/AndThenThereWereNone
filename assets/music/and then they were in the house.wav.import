@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://r3tp5nc0n17s"
+path="res://.godot/imported/and then they were in the house.wav-e3aca23a9ca4c859cebc180ed0dbc050.sample"
+
+[deps]
+
+source_file="res://assets/music/and then they were in the house.wav"
+dest_files=["res://.godot/imported/and then they were in the house.wav-e3aca23a9ca4c859cebc180ed0dbc050.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

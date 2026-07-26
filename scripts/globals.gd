@@ -4,6 +4,7 @@ enum GAME_STATE{PLAY, CUTSCENE}
 
 # Resources to be loaded when ROOM1 gets called once more
 var next_room_data: RoomData
+var home_to_clear: int = 1
 
 enum MINIGAMES {
 	FIGHTING,

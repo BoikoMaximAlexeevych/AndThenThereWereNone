@@ -8,7 +8,15 @@
 [ext_resource type="Script" uid="uid://bs6hmm4hjs6f8" path="res://scripts/interaction_component.gd" id="6_a5ia6"]
 [ext_resource type="Script" uid="uid://c05o8ri7as1kd" path="res://scripts/camera_control_component.gd" id="7_2cgup"]
 [ext_resource type="Script" uid="uid://dm1bntgwxsus0" path="res://scripts/animation_state_component.gd" id="7_a5ia6"]
-[ext_resource type="Script" uid="uid://bsp1urvcxe18w" path="res://scenes/smoke.gd" id="9_0dpix"]
+[ext_resource type="Script" uid="uid://wjjlc6wxp5ig" path="res://scripts/audio_component.gd" id="7_ih8y6"]
+[ext_resource type="Script" uid="uid://bsp1urvcxe18w" path="res://scripts/smoke.gd" id="9_0dpix"]
+[ext_resource type="AudioStream" uid="uid://bx6s61kg3lh6n" path="res://assets/sfx/step1.wav" id="10_x8k1v"]
+[ext_resource type="AudioStream" uid="uid://b2qy7aru46bj4" path="res://assets/sfx/step2.wav" id="11_ih8y6"]
+[ext_resource type="AudioStream" uid="uid://blsghh3q4yhdy" path="res://assets/sfx/step3.wav" id="12_rbud2"]
+[ext_resource type="AudioStream" uid="uid://b25r7f8wb1yvx" path="res://assets/sfx/step4.wav" id="13_vovfy"]
+[ext_resource type="AudioStream" uid="uid://cn6f58y271oqk" path="res://assets/sfx/step5.wav" id="14_u0pwc"]
+[ext_resource type="AudioStream" uid="uid://kdkyed0ct05u" path="res://assets/sfx/step6.wav" id="15_cicko"]
+[ext_resource type="AudioStream" uid="uid://cjm78fxvkt7fb" path="res://assets/sfx/step7.wav" id="16_bj47h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 6.0
@@ -228,6 +236,23 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Steps")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.23333333, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7eonc"]
 _data = {
@@ -349,6 +374,18 @@ scale_min = 0.099999994
 scale_max = 0.12
 alpha_curve = SubResource("CurveTexture_o8kns")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0dpix"]
+random_pitch = 1.122462
+streams_count = 8
+stream_0/stream = ExtResource("10_x8k1v")
+stream_1/stream = ExtResource("11_ih8y6")
+stream_2/stream = ExtResource("12_rbud2")
+stream_3/stream = ExtResource("13_vovfy")
+stream_4/stream = ExtResource("14_u0pwc")
+stream_5/stream = ExtResource("14_u0pwc")
+stream_6/stream = ExtResource("15_cicko")
+stream_7/stream = ExtResource("16_bj47h")
+
 [node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component", "camera_control_component", "animation_state_component", "interaction_component")]
 script = ExtResource("1_lrhn5")
 input_component = NodePath("Components/InputComponent")
@@ -393,6 +430,12 @@ script = ExtResource("6_a5ia6")
 input_component = NodePath("../InputComponent")
 metadata/_custom_type_script = "uid://bs6hmm4hjs6f8"
 
+[node name="AudioComponent" type="Node" parent="Components" unique_id=668754806 node_paths=PackedStringArray("steps_player")]
+unique_name_in_owner = true
+script = ExtResource("7_ih8y6")
+steps_player = NodePath("../../Steps")
+metadata/_custom_type_script = "uid://wjjlc6wxp5ig"
+
 [node name="visibleItems" type="Node2D" parent="." unique_id=921784716]
 
 [node name="Sprite2D" type="Sprite2D" parent="visibleItems" unique_id=1112571107]
@@ -413,6 +456,7 @@ drag_left_margin = 0.1
 drag_right_margin = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1572239148]
+audio_max_polyphony = 2
 libraries/ = SubResource("AnimationLibrary_7eonc")
 autoplay = &"idle_right"
 
@@ -452,3 +496,8 @@ one_shot = true
 explosiveness = 0.53
 process_material = SubResource("ParticleProcessMaterial_0dpix")
 script = ExtResource("9_0dpix")
+
+[node name="Steps" type="AudioStreamPlayer2D" parent="." unique_id=895590957]
+position = Vector2(0, 13.51)
+stream = SubResource("AudioStreamRandomizer_0dpix")
+volume_db = 3.0

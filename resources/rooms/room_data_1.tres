@@ -63,4 +63,5 @@ script = ExtResource("1_23pfr")
 tile_set = ExtResource("5_rhoye")
 trash_set = SubResource("Resource_4asn1")
 furniture_set = ExtResource("1_17ug6")
+order = 1
 metadata/_custom_type_script = "uid://dh6aux36cyex6"

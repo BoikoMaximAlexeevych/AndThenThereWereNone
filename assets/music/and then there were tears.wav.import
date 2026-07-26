@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c77c7270hareh"
+path="res://.godot/imported/and then there were tears.wav-725ca4a6214b4ff4e868d0569e6af3c8.sample"
+
+[deps]
+
+source_file="res://assets/music/and then there were tears.wav"
+dest_files=["res://.godot/imported/and then there were tears.wav-725ca4a6214b4ff4e868d0569e6af3c8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -17,13 +17,13 @@ func _ready() -> void:
 	SignalBus.player_enters_room.connect(_on_player_enters)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is HitboxComponent:
+	if area is HitboxComponent and Globals.home_to_clear == room_data.order:
 		(area as HitboxComponent).entered_camera_lock_area.emit(marker.global_position)
 		SignalBus.character_can_enter_toggled.emit(self)
 		SignalBus.show_hint.emit("E", "Enter")
 
 func _on_area_exited(area: Area2D) -> void:
-	if area is HitboxComponent:
+	if area is HitboxComponent and Globals.home_to_clear == room_data.order:
 		SignalBus.character_can_enter_toggled.emit(self)
 		(area as HitboxComponent).exited_camera_lock_area.emit()
 		SignalBus.hide_hint.emit()
@@ -33,3 +33,4 @@ func _on_player_enters(room: HouseTransitionArea):
 		Globals.next_room_data = self.room_data
 		SceneChangeManager.current_mode = SceneChangeManager.TRANSITION_MODES.REGULAR
 		SceneChangeManager.change_scene_to(room_scene)
+		Globals.home_to_clear += 1

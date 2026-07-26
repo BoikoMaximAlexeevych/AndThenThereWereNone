@@ -5,3 +5,4 @@ extends Resource
 @export var trash_set: TrashSetData
 @export var furniture_set: FurnitureSet
 @export var minigame: Globals.MINIGAMES
+@export var order: int

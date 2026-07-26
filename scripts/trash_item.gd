@@ -27,6 +27,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		return
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			$AudioStreamPlayer2D.play()
 			_collected = true
 			input_pickable = false
 			picked.emit(self)

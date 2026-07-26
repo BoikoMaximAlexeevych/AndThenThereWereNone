@@ -4,9 +4,13 @@ extends Node2D
 @export var environment: MainEnvironment
 @export var cutscene_cam: Camera2D
 
+signal greeting_finished
+
 func greeting_scenario() -> void: # lines 0 - 6
+	cutscene_cam.position = Vector2(800, 10)
 	cutscene_cam.make_current()
-	var tween = get_tree().create_tween()
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(cutscene_cam, "position", player.position + Vector2(0., -32), 20.)
 	MonologueWindow.add_to_queue(0)
 	MonologueWindow.add_to_queue(1)
 	MonologueWindow.add_to_queue(2)
@@ -14,8 +18,11 @@ func greeting_scenario() -> void: # lines 0 - 6
 	MonologueWindow.add_to_queue(4)
 	MonologueWindow.add_to_queue(5)
 	MonologueWindow.add_to_queue(6)
-	await get_tree().create_timer(2.).timeout
+	await get_tree().create_timer(.5).timeout
 	MonologueWindow.execute_queue()
+	await tween.finished
+	player.enable_camera()
+	greeting_finished.emit()
 	
 func fighter_reflect_scenario() -> void: # lines 7-9
 	MonologueWindow.add_to_queue(7)
@@ -41,6 +48,7 @@ func _ready() -> void:
 			player.global_position = environment.init_spawn_point.global_position
 			SignalBus.player_cant_move.emit()
 			greeting_scenario()
+			await greeting_finished
 			SignalBus.player_can_move.emit()
 		2:
 			player.global_position = environment.fighter_spawn_point.global_position
@@ -49,11 +57,6 @@ func _ready() -> void:
 			await MonologueWindow.finished_monologue
 			SignalBus.player_can_move.emit()
 			player.must_smoke()
-			await player.animation_state_component.player_smoked
-			await get_tree().create_timer(1.).timeout
-			player.die()
-			await get_tree().create_timer(5.).timeout
-			SceneChangeManager.change_scene_to(Globals.SCENES.END_CREDITS)
 		3:
 			player.global_position = environment.angler_spawn_point.global_position
 			SignalBus.player_cant_move.emit()
@@ -61,5 +64,7 @@ func _ready() -> void:
 			await MonologueWindow.finished_monologue
 			player.must_smoke()
 			await player.animation_state_component.player_smoked
+			await get_tree().create_timer(1.).timeout
 			player.die()
+			await get_tree().create_timer(5.).timeout
 			SceneChangeManager.change_scene_to(Globals.SCENES.END_CREDITS)

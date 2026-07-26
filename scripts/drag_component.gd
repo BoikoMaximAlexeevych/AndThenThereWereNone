@@ -43,6 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if in_focus:
+				$"../../AudioStreamPlayer2D".play()
 				_grab_pos_local = body.to_local(body.get_global_mouse_position())
 				grab()
 				get_viewport().set_input_as_handled()

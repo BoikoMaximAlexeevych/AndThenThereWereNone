@@ -292,6 +292,10 @@ texture = SubResource("AtlasTexture_kpk0m")
 position = Vector2(-323, 52)
 texture = SubResource("AtlasTexture_kpk0m")
 
+[node name="Sprite2D13" type="Sprite2D" parent="vegetation - back/deep back" unique_id=1001369682]
+position = Vector2(-323, 52)
+texture = SubResource("AtlasTexture_kpk0m")
+
 [node name="Sprite2D2" type="Sprite2D" parent="vegetation - back/deep back" unique_id=265331919]
 position = Vector2(256, -22)
 texture = SubResource("AtlasTexture_kpk0m")
@@ -338,7 +342,15 @@ position = Vector2(-238, 57)
 texture = SubResource("AtlasTexture_kpk0m")
 
 [node name="Sprite2D10" type="Sprite2D" parent="vegetation - back/deep back2" unique_id=1029125770]
-position = Vector2(-254, 67)
+position = Vector2(156, 8)
+texture = SubResource("AtlasTexture_kpk0m")
+
+[node name="Sprite2D14" type="Sprite2D" parent="vegetation - back/deep back2" unique_id=2091551423]
+position = Vector2(121, 7)
+texture = SubResource("AtlasTexture_kpk0m")
+
+[node name="Sprite2D13" type="Sprite2D" parent="vegetation - back/deep back2" unique_id=1643188214]
+position = Vector2(87, 6)
 texture = SubResource("AtlasTexture_kpk0m")
 
 [node name="Sprite2D11" type="Sprite2D" parent="vegetation - back/deep back2" unique_id=490447577]
@@ -555,6 +567,12 @@ position = Vector2(200, -110)
 texture = SubResource("AtlasTexture_lbhrr")
 
 [node name="Sprite2D10" type="Sprite2D" parent="Houses/Angler\'s house" unique_id=27351042]
+position = Vector2(-69, 45)
+rotation = -3.1415925
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_7gix3")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Houses/Angler\'s house" unique_id=159706184]
 position = Vector2(-69, 45)
 rotation = -3.1415925
 scale = Vector2(1, -1)

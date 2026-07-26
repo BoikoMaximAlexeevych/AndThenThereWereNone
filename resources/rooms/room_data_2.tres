@@ -73,4 +73,5 @@ tile_set = ExtResource("5_gyry4")
 trash_set = SubResource("Resource_ajijp")
 furniture_set = ExtResource("1_oclng")
 minigame = 1
+order = 2
 metadata/_custom_type_script = "uid://dh6aux36cyex6"
