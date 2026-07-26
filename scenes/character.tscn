@@ -38,6 +38,46 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2i(1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("visibleItems/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7eonc"]
+resource_name = "die"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visibleItems/Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8666667, 1.2, 1.5666667, 1.8333334, 2.1666667, 2.3666666, 2.4333334, 3.6333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 5), Vector2i(8, 5), Vector2i(8, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("visibleItems/Sprite2D:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(10, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_irmqu"]
 resource_name = "idle"
@@ -177,6 +217,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7eonc"]
 _data = {
 &"RESET": SubResource("Animation_0dpix"),
+&"die": SubResource("Animation_7eonc"),
 &"idle": SubResource("Animation_irmqu"),
 &"idle_left": SubResource("Animation_0lw5n"),
 &"idle_right": SubResource("Animation_2cgup"),
@@ -218,6 +259,9 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_a5ia6")
 blend_point_1/pos = -1.0
 blend_point_1/name = &"walk_left"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2hyy3"]
+animation = &"die"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dpix"]
 animation = &"smoke"
 
@@ -240,16 +284,30 @@ advance_expression = "smoking"
 advance_mode = 2
 advance_expression = "!smoking"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_irmqu"]
+advance_mode = 2
+advance_expression = "dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7eonc"]
+advance_mode = 2
+advance_expression = "dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x8k1v"]
+advance_mode = 2
+advance_expression = "dead"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yf5fn"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace1D_irmqu")
 states/Idle/position = Vector2(349, -55.5)
 states/Start/position = Vector2(202, 91.25)
 states/Walk/node = SubResource("AnimationNodeBlendSpace1D_7eonc")
 states/Walk/position = Vector2(516.5, -55.25)
+states/die/node = SubResource("AnimationNodeAnimation_2hyy3")
+states/die/position = Vector2(634, 83.1875)
 states/smoke/node = SubResource("AnimationNodeAnimation_0dpix")
 states/smoke/position = Vector2(448, 84.875)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_50cep"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_8yvht"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_lagn4"), "Idle", "smoke", SubResource("AnimationNodeStateMachineTransition_2hyy3"), "smoke", "Idle", SubResource("AnimationNodeStateMachineTransition_a5ia6")]
-graph_offset = Vector2(56, -138)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_50cep"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_8yvht"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_lagn4"), "Idle", "smoke", SubResource("AnimationNodeStateMachineTransition_2hyy3"), "smoke", "Idle", SubResource("AnimationNodeStateMachineTransition_a5ia6"), "Idle", "die", SubResource("AnimationNodeStateMachineTransition_irmqu"), "smoke", "die", SubResource("AnimationNodeStateMachineTransition_7eonc"), "Walk", "die", SubResource("AnimationNodeStateMachineTransition_x8k1v")]
+graph_offset = Vector2(162, -95)
 
 [node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component", "camera_control_component", "animation_state_component", "interaction_component")]
 script = ExtResource("1_lrhn5")
@@ -283,12 +341,14 @@ MAX_SPEED = 100.0
 FRICTION = 30.0
 
 [node name="AnimationStateComponent" type="Node" parent="Components" unique_id=832170714 node_paths=PackedStringArray("movement_component", "animation_tree")]
+unique_name_in_owner = true
 script = ExtResource("7_a5ia6")
 movement_component = NodePath("../MovementComponent")
 animation_tree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://dm1bntgwxsus0"
 
 [node name="InteractionComponent" type="Node" parent="Components" unique_id=267101170 node_paths=PackedStringArray("input_component")]
+unique_name_in_owner = true
 script = ExtResource("6_a5ia6")
 input_component = NodePath("../InputComponent")
 metadata/_custom_type_script = "uid://bs6hmm4hjs6f8"

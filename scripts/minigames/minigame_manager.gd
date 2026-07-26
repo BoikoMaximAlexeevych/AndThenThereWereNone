@@ -21,7 +21,7 @@ func set_minigame_finished(minigame_id: Globals.MINIGAMES):
 	canvas.show()
 	
 	var leftAmount := minigames_data.size() - _finished_minigames.size()
-	var text = "And then there " + NUMBERS_IN_STRING[leftAmount]
+	var text = "And then there " + NUMBERS_IN_STRING[leftAmount+1]
 	
 	SceneChangeManager.return_mode(text)
 

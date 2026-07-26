@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://b1qqpeqcqsm5a"]
+
+[ext_resource type="Script" uid="uid://c144woib1sygc" path="res://scripts/smoke_hint.gd" id="1_24dgj"]
+[ext_resource type="Texture2D" uid="uid://bdwdmi1qr55n5" path="res://assets/UI_sprites.png" id="2_pxyba"]
+[ext_resource type="Theme" uid="uid://cwvhfd302rriu" path="res://resources/game_theme.tres" id="3_rirrx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqjvw"]
+atlas = ExtResource("2_pxyba")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="Animation" id="Animation_0wrgi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/ColorRect:texture:region")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 0, 16, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/HBoxContainer/ColorRect/RichTextLabel:offset_transform_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2.565)]
+}
+
+[sub_resource type="Animation" id="Animation_dqjvw"]
+resource_name = "appear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0wrgi"]
+_data = {
+&"RESET": SubResource("Animation_0wrgi"),
+&"appear": SubResource("Animation_dqjvw")
+}
+
+[node name="SmokeHint" type="Control" unique_id=2071176343]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_24dgj")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=18343173]
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=376929080]
+layout_mode = 2
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=2089414091]
+custom_minimum_size = Vector2(900, 40)
+custom_maximum_size = Vector2(128, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_dqjvw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ColorRect" unique_id=1381252788]
+layout_mode = 0
+offset_right = 128.66667
+offset_bottom = 40.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -2.565)
+theme = ExtResource("3_rirrx")
+theme_override_colors/default_color = Color(0.04950881, 0.04950881, 0.04950881, 1)
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer" unique_id=191193030]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.08
+theme = ExtResource("3_rirrx")
+text = "Smoke
+"
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1876748852]
+libraries/ = SubResource("AnimationLibrary_0wrgi")

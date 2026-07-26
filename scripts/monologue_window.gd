@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var animPlayer: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
 
+signal finished_monologue
+
 var character_lines: Array[String] = [
 	"My job isn't a cheerful one",
 	"In fact, it's qiute the opposite",
@@ -12,6 +14,10 @@ var character_lines: Array[String] = [
 	"It's only natural that you get a bit desensitized in a long run",
 	"But your home tells stories of both your life and death",
 	"If you so happen to be dead, of course.",
+	# ===7-9====
+	"I bet this one picked an unfortunate fight",
+	"At least he died doing what he loved most",
+	"Or maybe shortly after doing what he loved most."
 ]
 
 var queue: Array[String]
@@ -26,7 +32,6 @@ func show_line(index: int, duration: float) -> void:
 	timer.start()
 	await timer.timeout
 	animPlayer.play("hide")
-	pass
 
 func add_to_queue(index: int) -> void:
 	queue.append(character_lines[index])
@@ -42,3 +47,4 @@ func execute_queue() -> void:
 		animPlayer.play("hide")
 		await animPlayer.animation_finished
 	flush_queue()
+	finished_monologue.emit()

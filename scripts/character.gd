@@ -21,3 +21,13 @@ func _update_components(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	_update_components(delta)
+
+func must_smoke() -> void:
+	SignalBus.show_smoke_hint.emit()
+	input_component.must_smoke = true
+	await animation_state_component.player_smoked
+	SignalBus.hide_smoke_hint.emit()
+	input_component.must_smoke = false
+
+func die () -> void: 
+	animation_state_component.dead = true
