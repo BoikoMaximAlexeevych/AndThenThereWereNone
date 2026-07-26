@@ -100,6 +100,22 @@ tracks/1/keys = {
 "values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_2hyy3"]
+resource_name = "smoke"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visibleItems/Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.73333335, 1.1, 1.7666668, 2.5666666, 3.4333334, 4.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(5, 4), Vector2i(6, 4), Vector2i(7, 4), Vector2i(8, 4)]
+}
+
 [sub_resource type="Animation" id="Animation_dp8ca"]
 resource_name = "walk_left"
 length = 0.65
@@ -164,6 +180,7 @@ _data = {
 &"idle": SubResource("Animation_irmqu"),
 &"idle_left": SubResource("Animation_0lw5n"),
 &"idle_right": SubResource("Animation_2cgup"),
+&"smoke": SubResource("Animation_2hyy3"),
 &"walk_left": SubResource("Animation_dp8ca"),
 &"walk_right": SubResource("Animation_a5ia6")
 }
@@ -183,7 +200,7 @@ blend_point_0/node = SubResource("AnimationNodeAnimation_dp8ca")
 blend_point_0/pos = -1.0
 blend_point_0/name = &"idle_left"
 blend_point_1/node = SubResource("AnimationNodeAnimation_0lw5n")
-blend_point_1/pos = 1.0
+blend_point_1/pos = 0.8
 blend_point_1/name = &"idle_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2cgup"]
@@ -201,6 +218,9 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_a5ia6")
 blend_point_1/pos = -1.0
 blend_point_1/name = &"walk_left"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0dpix"]
+animation = &"smoke"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_50cep"]
 advance_mode = 2
 
@@ -212,14 +232,24 @@ advance_expression = "velocity"
 advance_mode = 2
 advance_expression = "!velocity"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2hyy3"]
+advance_mode = 2
+advance_expression = "smoking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a5ia6"]
+advance_mode = 2
+advance_expression = "!smoking"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yf5fn"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace1D_irmqu")
 states/Idle/position = Vector2(349, -55.5)
 states/Start/position = Vector2(202, 91.25)
 states/Walk/node = SubResource("AnimationNodeBlendSpace1D_7eonc")
 states/Walk/position = Vector2(516.5, -55.25)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_50cep"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_8yvht"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_lagn4")]
-graph_offset = Vector2(78, -134)
+states/smoke/node = SubResource("AnimationNodeAnimation_0dpix")
+states/smoke/position = Vector2(448, 84.875)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_50cep"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_8yvht"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_lagn4"), "Idle", "smoke", SubResource("AnimationNodeStateMachineTransition_2hyy3"), "smoke", "Idle", SubResource("AnimationNodeStateMachineTransition_a5ia6")]
+graph_offset = Vector2(56, -138)
 
 [node name="Character" type="CharacterBody2D" unique_id=118948951 node_paths=PackedStringArray("input_component", "movement_component", "camera_control_component", "animation_state_component", "interaction_component")]
 script = ExtResource("1_lrhn5")
@@ -267,7 +297,7 @@ metadata/_custom_type_script = "uid://bs6hmm4hjs6f8"
 
 [node name="Sprite2D" type="Sprite2D" parent="visibleItems" unique_id=1112571107]
 texture = ExtResource("2_0lw5n")
-hframes = 6
+hframes = 9
 vframes = 6
 frame = 1
 
