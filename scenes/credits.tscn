@@ -265,7 +265,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_0bpdh")
 theme_override_font_sizes/normal_font_size = 43
-text = "Kizill"
+text = "kizill"
 fit_content = true
 vertical_alignment = 1
 
@@ -288,7 +288,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_0bpdh")
 theme_override_font_sizes/normal_font_size = 43
-text = "snowlullaby"
+text = "medicado"
 fit_content = true
 
 [node name="Credit5" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=335748049]

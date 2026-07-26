@@ -6,6 +6,7 @@ signal picked(key_item:KeyItem)
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collider: CollisionShape2D = $CollisionShape2D
 
+
 var minigame_scene: Globals.SCENES
 
 func _ready() -> void:
@@ -23,15 +24,13 @@ func setup(data: MinigameData) -> void:
 
 func appear() -> void:
 	animPlayer.play("appear")
-	pass
+
 
 func _on_mouse_entered() -> void:
 	animPlayer.play("bounce")
-	pass
 	
 func _on_mouse_exited() -> void:
 	animPlayer.stop()
-	pass
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:

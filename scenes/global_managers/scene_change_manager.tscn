@@ -362,13 +362,16 @@ vertical_alignment = 1
 [node name="from minigame transition" type="Node" parent="." unique_id=2093856607]
 
 [node name="ColorRect" type="ColorRect" parent="from minigame transition" unique_id=1620437789]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -0.094791666
+anchor_top = -0.17777778
+anchor_right = 1.1026042
+anchor_bottom = 1.1351852
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="from minigame transition" unique_id=625956036]
 anchors_preset = 15

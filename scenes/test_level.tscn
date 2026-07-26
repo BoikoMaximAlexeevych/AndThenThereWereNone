@@ -263,7 +263,7 @@ scroll_scale = Vector2(0.9, 0.9)
 color = Color(0.95913446, 0.7466193, 1, 1)
 
 [node name="Sign" type="Sprite2D" parent="." unique_id=189036206]
-position = Vector2(-453, -46)
+position = Vector2(-523, -46)
 texture = SubResource("AtlasTexture_57qmd")
 
 [node name="vegetation - back" type="Node2D" parent="." unique_id=2024552153]
