@@ -1,29 +1,95 @@
 [gd_scene format=3 uid="uid://cpfrguwtmspmj"]
 
 [ext_resource type="Script" uid="uid://d0qp6tpvjv3be" path="res://scripts/minigames/fight/fighter.gd" id="1_em1l7"]
-[ext_resource type="Texture2D" uid="uid://cl2p082jino47" path="res://assets/icon.svg" id="1_rb8wk"]
 [ext_resource type="Script" uid="uid://d2v25s4feoj5g" path="res://scripts/minigames/fight/fighting_minigame.gd" id="1_u2qxj"]
 [ext_resource type="Script" uid="uid://qwdecdkifc0x" path="res://scripts/minigames/fight/types/fight_config.gd" id="2_16dfa"]
 [ext_resource type="Script" uid="uid://bod0ijxb1ubau" path="res://scripts/minigames/fight/cop.gd" id="3_7r7e7"]
+[ext_resource type="PackedScene" uid="uid://bbw2vg2f03uk3" path="res://scenes/fight_envv.tscn" id="3_42jvd"]
+[ext_resource type="Texture2D" uid="uid://2bsbrgbwfrrk" path="res://assets/fighting_tileset.png" id="3_d5ajt"]
 [ext_resource type="Script" uid="uid://coc0g50yww3dk" path="res://scripts/minigames/fight/hud.gd" id="4_7r7e7"]
-[ext_resource type="Texture2D" uid="uid://cdwiv0mrkah3d" path="res://assets/vegetation.png" id="6_42jvd"]
+[ext_resource type="Theme" uid="uid://cwvhfd302rriu" path="res://resources/game_theme.tres" id="8_d5ajt"]
 
 [sub_resource type="Resource" id="Resource_u2qxj"]
 script = ExtResource("2_16dfa")
 click_gain = 0.1
 metadata/_custom_type_script = "uid://qwdecdkifc0x"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5ajt"]
+atlas = ExtResource("3_d5ajt")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eow3"]
+atlas = ExtResource("3_d5ajt")
+region = Rect2(16, 0, 8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_42jvd"]
-atlas = ExtResource("6_42jvd")
-region = Rect2(0, 0, 87, 125.5)
+atlas = ExtResource("3_d5ajt")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v7s"]
+atlas = ExtResource("3_d5ajt")
+region = Rect2(0, 8, 8, 8)
 
 [node name="FightingMinigame" type="Node2D" unique_id=1786860364 node_paths=PackedStringArray("player", "enemy", "cop", "hud")]
 script = ExtResource("1_u2qxj")
 config = SubResource("Resource_u2qxj")
-player = NodePath("Fighters/Player")
-enemy = NodePath("Fighters/Enemy")
-cop = NodePath("Fighters/Cop")
+player = NodePath("CanvasLayer/SubViewportContainer/SubViewport/Fighters/Player")
+enemy = NodePath("CanvasLayer/SubViewportContainer/SubViewport/Fighters/Enemy")
+cop = NodePath("CanvasLayer/SubViewportContainer/SubViewport/Fighters/Cop")
 hud = NodePath("HUD")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=412362617]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1849358926]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+stretch = true
+stretch_shrink = 16
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=1215099937]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(120, 67)
+render_target_update_mode = 4
+
+[node name="Node2D" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=141415509 instance=ExtResource("3_42jvd")]
+position = Vector2(54.185, 24.27)
+
+[node name="Fighters" type="Node2D" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=564347960]
+
+[node name="Player" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Fighters" unique_id=1932991119]
+position = Vector2(50, 40)
+texture = SubResource("AtlasTexture_d5ajt")
+script = ExtResource("1_em1l7")
+push_distance = 5.0
+max_lean_deg = 5.0
+
+[node name="Enemy" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Fighters" unique_id=1364644458]
+position = Vector2(60, 40)
+texture = SubResource("AtlasTexture_2eow3")
+script = ExtResource("1_em1l7")
+push_distance = 5.0
+max_lean_deg = 5.0
+facingRight = false
+
+[node name="Cop" type="Node2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Fighters" unique_id=1691140151 node_paths=PackedStringArray("baton")]
+script = ExtResource("3_7r7e7")
+offscreen_offset = Vector2(-200, 0)
+stand_offset = Vector2(-5, -2)
+baton = NodePath("Baton")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Fighters/Cop" unique_id=1858373819]
+texture = SubResource("AtlasTexture_42jvd")
+
+[node name="Baton" type="Node2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Fighters/Cop" unique_id=1549502218]
+position = Vector2(2, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport/Fighters/Cop/Baton" unique_id=859592408]
+texture = SubResource("AtlasTexture_g4v7s")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=33295977 node_paths=PackedStringArray("bar", "prompt")]
 script = ExtResource("4_7r7e7")
@@ -64,37 +130,9 @@ offset_top = 150.0
 offset_right = 100.0
 offset_bottom = 173.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("8_d5ajt")
+theme_override_font_sizes/font_size = 64
 text = "CLICK!"
 horizontal_alignment = 1
 
-[node name="Fighters" type="Node2D" parent="." unique_id=564347960]
-
-[node name="Player" type="Sprite2D" parent="Fighters" unique_id=1932991119]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(832, 453)
-texture = ExtResource("1_rb8wk")
-script = ExtResource("1_em1l7")
-
-[node name="Enemy" type="Sprite2D" parent="Fighters" unique_id=1364644458]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(1081, 454)
-texture = ExtResource("1_rb8wk")
-script = ExtResource("1_em1l7")
-facingRight = false
-
-[node name="Cop" type="Node2D" parent="Fighters" unique_id=1691140151 node_paths=PackedStringArray("baton")]
-script = ExtResource("3_7r7e7")
-baton = NodePath("Baton")
-
-[node name="Sprite2D" type="Sprite2D" parent="Fighters/Cop" unique_id=1858373819]
-texture = SubResource("AtlasTexture_42jvd")
-
-[node name="Baton" type="Node2D" parent="Fighters/Cop" unique_id=1549502218]
-position = Vector2(14, -16)
-
-[node name="BatonPoly" type="Polygon2D" parent="Fighters/Cop/Baton" unique_id=96965717]
-color = Color(0.14117648, 0.10980392, 0.09019608, 1)
-polygon = PackedVector2Array(-2, 0, 2, 0, 2, -26, -2, -26)
-
-[connection signal="struck" from="Fighters/Cop" to="." method="_on_cop_struck"]
+[connection signal="struck" from="CanvasLayer/SubViewportContainer/SubViewport/Fighters/Cop" to="." method="_on_cop_struck"]

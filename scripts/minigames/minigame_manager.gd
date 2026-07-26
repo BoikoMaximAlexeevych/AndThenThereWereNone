@@ -4,7 +4,7 @@ extends Node2D
 @export var canvas: CanvasLayer
 @export var leftLabel: Label
 
-var NUMBERS_IN_STRING = ["none", "one", "two", "three", "four", "five"]
+var NUMBERS_IN_STRING = ["were none", "was one", "were two", "were three", "four", "five"]
 
 #of course godot doesn't have sets
 var _finished_minigames: Dictionary[Globals.MINIGAMES, bool]
@@ -21,13 +21,8 @@ func set_minigame_finished(minigame_id: Globals.MINIGAMES):
 	canvas.show()
 	
 	var leftAmount := minigames_data.size() - _finished_minigames.size()
-	leftLabel.text = "And then there were %s" % NUMBERS_IN_STRING[leftAmount]
+	var text = "And then there " + NUMBERS_IN_STRING[leftAmount]
 	
-	#temporary measure
-	await get_tree().create_timer(2.0).timeout
-	canvas.hide()
-	
-	if (leftAmount == 0):
-		get_tree().quit()
-		
+	SceneChangeManager.return_mode(text)
+
 	SceneChangeManager.change_scene_to(Globals.SCENES.MAIN)

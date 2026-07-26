@@ -96,6 +96,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../from minigame transition/ColorRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../from minigame transition/RichTextLabel:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_e5huv"]
 resource_name = "minigame_transition"
@@ -187,6 +211,48 @@ tracks/6/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_iguyk"]
+resource_name = "return"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../from minigame transition/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 3.3333333, 3.8666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../from minigame transition/RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 3.3666666, 3.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_new_scene"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_r44wu"]
 resource_name = "transition"
 length = 1.5
@@ -221,6 +287,7 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_faiqi"),
 &"minigame_transition": SubResource("Animation_e5huv"),
+&"return": SubResource("Animation_iguyk"),
 &"transition": SubResource("Animation_r44wu")
 }
 
@@ -249,6 +316,7 @@ root_node = NodePath("../ColorRect")
 libraries/ = SubResource("AnimationLibrary_faiqi")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1294176088]
+visible = false
 material = SubResource("ShaderMaterial_k7qx3")
 anchors_preset = 15
 anchor_right = 1.0
@@ -303,19 +371,15 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="from minigame transition" unique_id=625956036]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -1252.0
-offset_top = -115.0
-offset_bottom = 115.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("4_e5huv")
 theme_override_font_sizes/normal_font_size = 96
-text = "I THINK I KNOW WHAT HAPPENED..."
+text = "AND THEN THERE WERE "
 fit_content = true
+horizontal_alignment = 1
 vertical_alignment = 1

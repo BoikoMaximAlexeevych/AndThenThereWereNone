@@ -8,10 +8,10 @@ var character_lines: Array[String] = [
 	"My job isn't a cheerful one",
 	"In fact, it's qiute the opposite",
 	"But someone has to tidy up dead people's houses before they get sold",
-	"And someone is willing to pay for that",
+	"And someone is willing to pay for that.",
 	"It's only natural that you get a bit desensitized in a long run",
-	"But I feel like witnessing the owner's death each time",
-	"Each. Damn. Time."
+	"But your home tells stories of both your life and death",
+	"If you so happen to be dead, of course.",
 ]
 
 var queue: Array[String]
